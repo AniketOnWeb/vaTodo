@@ -16,6 +16,36 @@
   font-weight: 300;
 }
 
+//Initialize Loader
+
+.loader1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 5rem;
+  width: 5rem;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 0.5em solid;
+  animation: dual-ring cubic-bezier(0.88, 0.11, 0, 0.45) infinite 2s;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes dual-ring {
+  0% {
+    border-color: transparent #c0ff33 transparent #ff335f;
+    transform: rotate(0deg);
+  }
+  50% {
+    border-color: transparent #b433ff transparent #f18520;
+    transform: rotate(180deg);
+  }
+  100% {
+    border-color: transparent #c0ff33 transparent #ff335f;
+    transform: rotate(360deg);
+  }
+}
+
 //====================================
 //               REgister
 //====================================
@@ -56,8 +86,9 @@
       display: block;
       -webkit-transition: all 0.2s;
       transition: all 0.2s;
+      background-color: transparent;
       margin-left: 24%;
-      width: 44%;
+      width: 47%;
 
       &:focus {
         outline: none;
@@ -104,18 +135,40 @@
 
 //Design Elements
 
-.design-grid {
-  position: absolute;
-  left: 25rem;
-  z-index: -9;
-  bottom: 25rem;
-  transform: rotate(90deg);
-
-  &-2 {
+.design {
+  &-grid {
     position: absolute;
-    transform: rotate(90deg) translateX(11rem);
-    right: 25.7rem;
-    z-index: -11;
+    left: 25rem;
+    z-index: -9;
+    transform: rotate(90deg) translateX(-32rem);
+
+    &-2 {
+      position: absolute;
+      transform: rotate(90deg) translateX(11rem);
+      right: 25.7rem;
+      z-index: -11;
+    }
+  }
+
+  &-circle {
+    position: absolute;
+    top: 21rem;
+    left: 7rem;
+  }
+  &-halfCircle {
+    position: absolute;
+    top: -0.2rem;
+    left: 54rem;
+  }
+  &-triangle {
+    left: 62rem;
+    position: absolute;
+    top: 39rem;
+  }
+  &-square {
+    position: absolute;
+    top: 48rem;
+    left: -3rem;
   }
 }
 
@@ -144,7 +197,7 @@
     &__label {
     }
     &__button {
-      background-color: transparent !important;
+      background-color: var(--color-secondary);
       border: 1.2px solid var(--color-intenseBlue);
       color: var(--color-intenseBlue);
       font-weight: 600;

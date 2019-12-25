@@ -6,12 +6,16 @@ import firebase from "../../Firebase/firebase";
 
 //Design Elements
 import grid from "../../../assets/img/RegisterGrid1x.png";
+import circle from "../../../assets/svg/circle.svg";
+import halfCircle from "../../../assets/svg/halfCircle.svg";
+import square from "../../../assets/svg/square.svg";
+import triangle from "../../../assets/svg/triangle.svg";
 
 const RegLogin = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  height: 100%;
+  height: 100vh;
 `;
 const RegForm = styled.div`
   margin-top: 4rem;
@@ -48,7 +52,7 @@ const Register = ({ history }) => {
   async function onRegister() {
     try {
       await firebase.register(name, regemail, regpassword);
-      history.replace("/dashboard");
+      history.replace("/");
     } catch (error) {
       alert(error.message);
     }
@@ -58,7 +62,7 @@ const Register = ({ history }) => {
   async function Login() {
     try {
       await firebase.login(loginemail, loginpassword);
-      history.replace("/dashboard");
+      history.replace("/");
     } catch (error) {
       alert(error.message);
     }
@@ -69,6 +73,10 @@ const Register = ({ history }) => {
       <RegForm>
         <RegContent>
           <img src={grid} className="design-grid" />
+          <img src={circle} className="design-circle" />
+          <img src={halfCircle} className="design-halfCircle" />
+          <img src={triangle} className="design-triangle" />
+          <img src={square} className="design-square" />
           <h1 className="reg-title">Get Started</h1>
           <div className="reg-text__container">
             <p className="reg-text">by creating your personal account</p>

@@ -39,6 +39,10 @@ class firebase {
     return app.auth().currentUser;
   }
 
+  getCurrentUsername() {
+    return app.auth().currentUser && app.auth().currentUser.displayName;
+  }
+
   isInitialized() {
     return new Promise(resolve => {
       app.auth().onAuthStateChanged(resolve);

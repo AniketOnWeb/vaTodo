@@ -43,6 +43,19 @@ class firebase {
     return app.auth().currentUser && app.auth().currentUser.displayName;
   }
 
+  addQuote(quote) {
+    if (!app.auth().currentUser) {
+      return alert("Not Authorized");
+    }
+
+    return app
+      .firestore()
+      .doc(`Projects/${app.auth().currentUser.uid}`)
+      .set({
+        quote
+      });
+  }
+
   isInitialized() {
     return new Promise(resolve => {
       app.auth().onAuthStateChanged(resolve);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import firebase from "../../Firebase/firebase";
 import { withRouter } from "react-router-dom";

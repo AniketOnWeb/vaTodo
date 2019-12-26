@@ -56,6 +56,15 @@ class firebase {
       });
   }
 
+  async getUserQuote() {
+    const quote = await app
+      .firestore()
+      .doc(`Projects/${app.auth().currentUser.uid}`)
+      .get();
+
+    return quote.get("quote");
+  }
+
   isInitialized() {
     return new Promise(resolve => {
       app.auth().onAuthStateChanged(resolve);

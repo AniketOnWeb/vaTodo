@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import firebase from "./Firebase/firebase";
 import Register from "./Components/Auth/Register";
 import Main from "./Sections/Main";
+import { ProjectsProvider, SelectedProjectProvider } from "./Contexts";
 
 export const App = () => {
   const [firbaseInitialized, setFirbaseInitialized] = useState(false);
@@ -17,8 +18,12 @@ export const App = () => {
   return firbaseInitialized !== false ? (
     <Router>
       <Switch>
-        <Route exact path="/" component={Main} />
-        <Route exact path="/register" component={Register} />
+        <SelectedProjectProvider>
+          <ProjectsProvider>
+            <Route exact path="/" component={Main} />
+            <Route exact path="/register" component={Register} />
+          </ProjectsProvider>
+        </SelectedProjectProvider>
       </Switch>
     </Router>
   ) : (

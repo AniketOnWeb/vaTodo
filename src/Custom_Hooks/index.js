@@ -8,7 +8,6 @@ export const useProjects = () => {
     app
       .firestore()
       .collection("Projects")
-      //   .doc(`${app.auth().currentUser.uid}`)
       .where("userId", "==", `${app.auth().currentUser.uid}`)
       .orderBy("ProjectId")
       .get()

@@ -10,6 +10,7 @@ import { ExpandArrow } from "../../../assets/svg/all-icons";
 
 //ADD Project Component
 import { AddProjects } from "../AddProjects";
+import { Projects } from "../Projects";
 
 const Side = styled.div`
   width: 24vw;
@@ -97,6 +98,9 @@ const Sidebar = () => {
         </span>
         <span className="sidebar__middle-text">Projects</span>
       </Middle>
+
+      {/* Displaying Projects */}
+      {showProject && <Projects />}
 
       {/* Add Project Component */}
       <AddProjects />

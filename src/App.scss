@@ -250,6 +250,12 @@
   }
 
   &__middle {
+    margin-top: 1.5rem;
+    margin-left: -7rem;
+    cursor: pointer;
+    border-bottom: 1px solid #0000001c;
+    padding: 2rem;
+
     span:first-of-type {
       margin-right: 1.3rem;
     }
@@ -270,12 +276,34 @@
       color: var(--color-text);
     }
   }
+
+  &__projects {
+    list-style: none;
+    cursor: pointer;
+    padding: 1rem;
+    display: flex;
+    padding-left: 8.5rem;
+    font-size: 1.4rem;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+
+    &:first-of-type {
+      margin-top: 1.5rem;
+    }
+
+    &.active {
+      background-color: #16ab8e96;
+    }
+  }
 }
 
 //====================================
 //            ADD PROJECT
 //====================================
 .add-project {
+  margin-top: 4rem;
+
   &-plus {
     margin-right: 1rem;
     transform: translateY(5px);
@@ -323,9 +351,45 @@
         width: 38rem;
         border: none;
         border-radius: 0.4rem;
+        padding-left: 1rem;
+        margin-bottom: 2.5rem;
+      }
 
-        &:first-of-type {
-          margin-bottom: 2.5rem;
+      &-dropdown {
+        width: 1rem;
+        margin-right: 1.5rem;
+        margin-top: 0.8rem;
+        fill: var(--color-text);
+
+        &--list {
+          list-style: none;
+          display: flex;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.096);
+          padding: 1rem 0;
+          cursor: pointer;
+
+          &:nth-child(1) {
+            padding-top: 2rem;
+          }
+
+          &:hover {
+            background-color: #e2e2e266;
+          }
+
+          &:active {
+            background-color: #e2e2e2c7;
+          }
+
+          span {
+            font-size: 1.2rem;
+            letter-spacing: 0.3;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 500;
+            color: #82807e;
+            padding-left: 0.9rem !important;
+            margin-bottom: 0 !important;
+          }
         }
       }
     }

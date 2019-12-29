@@ -13,7 +13,7 @@ import { AddProjects } from "../AddProjects";
 import { Projects } from "../Projects";
 
 const Side = styled.div`
-  width: 24vw;
+  width: 33rem;
   background-color: var(--color-main);
   height: calc(100vh);
   text-align: center;

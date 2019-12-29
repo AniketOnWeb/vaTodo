@@ -1,16 +1,14 @@
 import { collatedTasks } from "../Constants";
 
-export const collatedTasksExist = selectedProject => {
+//smh do not use angular brackets to make it run
+export const collatedTasksExist = selectedProject =>
   collatedTasks.find(task => task.key === selectedProject);
-};
 
-export const getTitle = (projects, ProjectId) => {
-  projects.find(project => project.ProjectId === projectId);
-};
+export const getTitle = (projects, ProjectId) =>
+  projects.find(project => project.ProjectId === ProjectId);
 
-export const getCollatedTitle = (projects, key) => {
+export const getCollatedTitle = (projects, key) =>
   projects.find(project => project.key === key);
-};
 
 export const generatePushId = (() => {
   const PUSH_CHARS =

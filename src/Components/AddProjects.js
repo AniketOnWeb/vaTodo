@@ -66,7 +66,8 @@ export const AddProjects = ({ shouldShow = false }) => {
           ProjectId,
           name: ProjectName,
           userId: app.auth().currentUser.uid,
-          ProjectColor
+          ProjectColor,
+          archived: false
         })
         .then(() => {
           setProjects([...projects]);

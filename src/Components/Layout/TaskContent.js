@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import DesignGrid from "../../../assets/svg/designgrid.svg";
 import { AddTasks } from "../AddTasks";
 
+import { collatedTasks } from "../../Constants";
+import { collatedTasksExist, getCollatedTitle, getTitle } from "../../Helpers";
+import { useSelectedProjectValue, useProjectsValue } from "../../Contexts";
+
+//
+//
+//
 const ProjectName = styled.div`
   padding: 1rem 5rem;
   border-bottom: 1px solid #1abc9c33;
@@ -19,12 +26,36 @@ const TasksList = styled.div`
 `;
 
 const TaskContent = () => {
+  const { selectedProject } = useSelectedProjectValue();
+  const { projects } = useProjectsValue();
+
   let projectName = "";
+
+  if (collatedTasksExist(selectedProject) && selectedProject) {
+    projectName = getCollatedTitle(collatedTasks, selectedProject).name;
+  }
+  console.log("ProjectName : 1", projectName);
+
+  if (
+    projects &&
+    projects.length > 0 &&
+    selectedProject &&
+    !collatedTasksExist(selectedProject)
+  ) {
+    projectName = getTitle(projects, selectedProject).name;
+    console.log("ProjectName : 2", projectName);
+  }
+
+  // console.log(getTitle(projects, selectedProject)).name;
+
+  useEffect(() => {
+    document.title = `${projectName}: Todoist`;
+  });
 
   return (
     <>
       <ProjectName>
-        <h1>Today</h1>
+        <h1>{projectName}</h1>
         <img src={DesignGrid} />
       </ProjectName>
 

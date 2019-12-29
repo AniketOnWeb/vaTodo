@@ -4,6 +4,9 @@ import Trash from "../../../assets/svg/trash.svg";
 import archive from "../../../assets/svg/archive.svg";
 import color from "../../../assets/svg/color.svg";
 
+import { useProjectsValue, useSelectedProjectValue } from "../../Contexts";
+import app from "firebase/app";
+
 const Overlay = styled.div`
   position: absolute;
   width: 15rem;
@@ -47,17 +50,52 @@ const Overlay = styled.div`
     }
   }
 `;
-const SettingOverlay = ({ showSetting, setShowSetting }) => {
+
+const SettingOverlay = ({ showSetting, setShowSetting, project }) => {
+  const { projects, setProjects } = useProjectsValue();
+  const { setSelectedProject } = useSelectedProjectValue();
+  //   const [archived, setArchived] = useState(initialState);
+
+  const archiveProject = docID => {
+    app
+      .firestore()
+      .collection("Projects")
+      .doc(docID)
+      .update({
+        archived: true
+      });
+  };
+
+  const deleteProject = docID => {
+    app
+      .firestore()
+      .collection("Projects")
+      .doc(docID)
+      .delete()
+      .then(() => {
+        setProjects([...projects]);
+        setSelectedProject("INBOX");
+      });
+  };
   return (
     <Overlay>
       <ul onClick={() => setShowSetting(!showSetting)}>
-        <li>
+        <li
+          onClick={() => {
+            deleteProject(project.docId);
+          }}
+        >
           <span style={{ transform: "translateY(2px)", marginRight: ".8rem" }}>
             <img src={Trash} className="sidebar__projects-setting--delete" />
           </span>
           <span>Delete</span>
         </li>
-        <li>
+
+        <li
+          onClick={() => {
+            archiveProject(project.docId);
+          }}
+        >
           <span style={{ transform: "translateY(2px)", marginRight: ".8rem" }}>
             <img
               src={archive}

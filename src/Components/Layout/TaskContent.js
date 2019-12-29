@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import DesignGrid from "../../../assets/svg/designgrid.svg";
+import { AddTasks } from "../AddTasks";
 
 const ProjectName = styled.div`
-  padding: 2.5rem 5rem;
+  padding: 1rem 5rem;
   border-bottom: 1px solid #1abc9c33;
 
   h1 {
@@ -18,6 +19,8 @@ const TasksList = styled.div`
 `;
 
 const TaskContent = () => {
+  let projectName = "";
+
   return (
     <>
       <ProjectName>
@@ -48,6 +51,8 @@ const TaskContent = () => {
             Give back the car
           </li>
         </ul>
+
+        <AddTasks />
       </TasksList>
     </>
   );

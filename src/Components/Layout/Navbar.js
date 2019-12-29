@@ -6,7 +6,7 @@ import DarkMode from "../../../assets/svg/dark.svg";
 import Logout from "../Auth/Logout";
 
 const Nav = styled.div`
-  padding: 4rem 6rem 2rem 6rem;
+  padding: 2.5rem 5rem 2rem 6rem;
   text-align: right;
   border-bottom: 1px solid #1abc9c33;
 `;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useProjectsValue } from "../Contexts";
+import { useProjectsValue, useSelectedColorValue } from "../Contexts";
 
 export const Projects = () => {
   const [active, setActive] = useState("");
@@ -16,8 +16,11 @@ export const Projects = () => {
                 ? "active sidebar__projects"
                 : "sidebar__projects"
             }
-            onClick={() => setActive(project.ProjectId)}
+            onClick={() => {
+              setActive(project.ProjectId);
+            }}
           >
+            <img src={project.ProjectColor} />
             {project.name}
           </li>
         ))}

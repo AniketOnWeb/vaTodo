@@ -63,6 +63,7 @@ const Register = ({ history }) => {
     try {
       await firebase.login(loginemail, loginpassword);
       history.replace("/");
+      location.reload();
     } catch (error) {
       alert(error.message);
     }

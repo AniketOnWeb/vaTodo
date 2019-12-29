@@ -441,3 +441,54 @@
     // text-align: center;
   }
 }
+
+//====================================
+//           Navbar
+//====================================
+.navbar {
+  &__elements {
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-right: 3rem;
+    }
+
+    &-setting-activeRotation {
+      transform: rotateZ(45deg);
+      transition: all 0.2s ease-in-out;
+      margin-right: 0rem !important;
+    }
+    &-setting-reverseRotation {
+      transform: rotateZ(0deg);
+      transition: all 0.2s ease-in-out;
+    }
+  }
+}
+
+//====================================
+//          Tasks List
+//====================================
+.task {
+  &__list {
+    li {
+      padding: 1rem;
+      font-size: 1.3rem;
+      font-weight: 500;
+      font-family: "Open Sans", sans-serif;
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+
+      span:first-of-type {
+        cursor: pointer;
+        color: #343434;
+        height: 10px;
+        width: 10px;
+        display: inline-block;
+        border: 1.5px solid var(--color-main);
+        border-radius: 16px;
+        margin-right: 1.2rem;
+      }
+    }
+  }
+}

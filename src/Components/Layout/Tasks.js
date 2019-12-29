@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import firebase from "../../Firebase/firebase";
 import { withRouter } from "react-router-dom";
+import Navbar from "./Navbar";
+import TaskContent from "./TaskContent";
 
 const TaskComponent = styled.div`
   min-width: 76vw;
@@ -12,7 +13,8 @@ const Tasks = ({ history }) => {
   return (
     <>
       <TaskComponent>
-        <div>hi</div>
+        <Navbar />
+        <TaskContent />
       </TaskComponent>
     </>
   );

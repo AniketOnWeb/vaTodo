@@ -10,11 +10,20 @@ import {
   useSelectedProjectValue
 } from "./SelectedProjectContext";
 
+import {
+  SelectedColorProvider,
+  useSelectedColorValue,
+  SelectedColorContext
+} from "./SelectedColorContext";
+
 export {
   ProjectsContext,
   ProjectsProvider,
   useProjectsValue,
   SelectedProjectContext,
   SelectedProjectProvider,
-  useSelectedProjectValue
+  useSelectedProjectValue,
+  SelectedColorProvider,
+  useSelectedColorValue,
+  SelectedColorContext
 };

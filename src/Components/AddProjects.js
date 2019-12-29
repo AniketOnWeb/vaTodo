@@ -2,14 +2,16 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import app from "firebase/app";
 import { generatePushId } from "../Helpers";
-import { useProjectsValue } from "../Contexts";
+import { useProjectsValue, useSelectedColorValue } from "../Contexts";
+
 //Icon
 import Plus from "../../assets/svg/plus.svg";
-import pink from "../../assets/svg/pink.svg";
+import Salmon from "../../assets/svg/salmon.svg";
 import { ExpandArrow } from "../../assets/svg/all-icons";
+
 //Modal
 import Modal from "../Modals/index";
-import { ProjectColorOverlay } from "./ProjectColorOverlay";
+import { ProjectColorOverlay } from "./Overlays/ProjectColorOverlay";
 
 const AddComponent = styled.div`
   cursor: pointer;
@@ -46,6 +48,8 @@ export const AddProjects = ({ shouldShow = false }) => {
   const [show, setShow] = useState(shouldShow);
   const [showModal, setShowModal] = useState(false);
   const [showDropDown, setShowDropDown] = useState(false);
+  const [ProjectColor, setProjectColor] = useState("");
+
   //will generate random Project Id
   const ProjectId = generatePushId();
 
@@ -61,7 +65,8 @@ export const AddProjects = ({ shouldShow = false }) => {
         .add({
           ProjectId,
           name: ProjectName,
-          userId: app.auth().currentUser.uid
+          userId: app.auth().currentUser.uid,
+          ProjectColor
         })
         .then(() => {
           setProjects([...projects]);
@@ -103,7 +108,7 @@ export const AddProjects = ({ shouldShow = false }) => {
 
                 <DropDown onClick={() => setShowDropDown(!showDropDown)}>
                   <span>
-                    <img src={pink} /> Pink
+                    <img src={Salmon} /> Salmon
                   </span>
                   <span className="add-project__modal-body-dropdown">
                     <ExpandArrow />
@@ -111,7 +116,14 @@ export const AddProjects = ({ shouldShow = false }) => {
                 </DropDown>
 
                 {/* Doropdown for Project Color Overlay */}
-                {showDropDown && <ProjectColorOverlay />}
+                {showDropDown && (
+                  <ProjectColorOverlay
+                    showDropDown={showDropDown}
+                    setShowDropDown={setShowDropDown}
+                    ProjectColor={ProjectColor}
+                    setProjectColor={setProjectColor}
+                  />
+                )}
               </div>
               <div className="add-project__modal-action">
                 <button type="submit" onClick={() => addProject()}>

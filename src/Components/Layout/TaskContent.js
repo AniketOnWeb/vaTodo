@@ -3,10 +3,11 @@ import styled from "styled-components";
 import DesignGrid from "../../../assets/svg/designgrid.svg";
 import { AddTasks } from "../AddTasks";
 
+import { useTasks } from "../../Custom_Hooks";
 import { collatedTasks } from "../../Constants";
 import { collatedTasksExist, getCollatedTitle, getTitle } from "../../Helpers";
 import { useSelectedProjectValue, useProjectsValue } from "../../Contexts";
-
+import Checkbox from "../Checkbox";
 //
 //
 //
@@ -28,13 +29,15 @@ const TasksList = styled.div`
 const TaskContent = () => {
   const { selectedProject } = useSelectedProjectValue();
   const { projects } = useProjectsValue();
+  const { tasks } = useTasks(selectedProject);
 
   let projectName = "";
 
   if (collatedTasksExist(selectedProject) && selectedProject) {
     projectName = getCollatedTitle(collatedTasks, selectedProject).name;
   }
-  console.log("ProjectName : 1", projectName);
+
+  console.log(tasks);
 
   if (
     projects &&
@@ -45,8 +48,6 @@ const TaskContent = () => {
     projectName = getTitle(projects, selectedProject).name;
     console.log("ProjectName : 2", projectName);
   }
-
-  // console.log(getTitle(projects, selectedProject)).name;
 
   useEffect(() => {
     document.title = `${projectName}: Todoist`;
@@ -60,27 +61,13 @@ const TaskContent = () => {
       </ProjectName>
 
       <TasksList>
-        <ul className="task__list">
-          <li>
-            <span></span>
-            <span>Buy Bread From Mother Dairy</span>
-          </li>
-          <li>
-            <span></span>
-            <span>Get the car from Rohit</span>
-          </li>
-          <li>
-            <span></span>
-            Do laundry
-          </li>
-          <li>
-            <span></span>
-            Order Breakfast
-          </li>
-          <li>
-            <span></span>
-            Give back the car
-          </li>
+        <ul className="tasks__list">
+          {tasks.map(task => (
+            <li key={`${task.id}`}>
+              <Checkbox id={task.id} />
+              <span>{task.task}</span>
+            </li>
+          ))}
         </ul>
 
         <AddTasks />

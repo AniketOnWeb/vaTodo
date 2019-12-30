@@ -551,12 +551,7 @@
       flex-direction: column;
       align-items: center;
       display: flex;
-      &-body {
-        margin-top: 1.2rem;
-        flex-direction: column;
-        align-items: center;
-        display: flex;
-      }
+
       input {
         width: 38rem;
         border: none;

@@ -8,6 +8,7 @@ import info from "../../../assets/svg/info.svg";
 import app from "firebase/app";
 import firebase from "../../Firebase/firebase";
 import { useSelectedProjectValue } from "../../Contexts";
+import ProjectsOverlay from "../Overlays/ProjectsOverlay";
 
 const Features = styled.div`
   display: -webkit-flex;
@@ -62,6 +63,7 @@ const Options = styled.div`
 
 const QuickAdd = () => {
   const [show, setShow] = useState(false);
+  const [showProjectOvrelay, setShowProjectOvrelay] = useState(false);
   const [task, setTask] = useState("");
   const [project, setProject] = useState("");
   const { selectedProject } = useSelectedProjectValue();
@@ -84,6 +86,7 @@ const QuickAdd = () => {
           <div className="add-task__modal">
             <div className="add-task__modal-header">
               <h3>Quick Add Task</h3>
+              <h2 onClick={() => setShow(!show)}>X</h2>
             </div>
 
             <div className="add-task__modal-body">
@@ -114,7 +117,19 @@ const QuickAdd = () => {
               </Buttons>
 
               <Options>
-                <img src={calender} />
+                <img
+                  src={calender}
+                  onClick={() => setShowProjectOvrelay(!showProjectOvrelay)}
+                />
+
+                {showProjectOvrelay && (
+                  <ProjectsOverlay
+                    showProjectOvrelay={showProjectOvrelay}
+                    setShowProjectOvrelay={setShowProjectOvrelay}
+                    setProject={setProject}
+                  />
+                )}
+
                 <img src={info} />
                 <img src={prroject} />
               </Options>

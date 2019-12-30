@@ -21,7 +21,6 @@ const Navbar = () => {
         className="navbar__elements navbar__elements-dark"
       />
       <Logout />
-      {/* <Settings /> */}
     </Nav>
   );
 };

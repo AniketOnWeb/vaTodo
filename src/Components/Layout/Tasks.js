@@ -7,7 +7,7 @@ import TaskContent from "./TaskContent";
 const TaskComponent = styled.div`
   min-width: 104rem;
   height: calc(100vh);
-  overflowy: auto;
+  overflow-y: auto;
 `;
 
 const Tasks = ({ history }) => {

@@ -5,10 +5,20 @@ import { useSelectedProjectValue } from "../Contexts";
 import moment from "moment";
 import styled from "styled-components";
 
+// Icons
 import calender from "../../assets/svg/calender.svg";
 import prroject from "../../assets/svg/prroject.svg";
 import info from "../../assets/svg/info.svg";
 
+import ProjectsOverlay from "./Overlays/ProjectsOverlay";
+import TaskDate from "./TaskDate";
+
+//
+//
+//
+//
+//
+//
 const Features = styled.div`
   display: flex;
   flex-direction: row;
@@ -54,7 +64,10 @@ const Options = styled.div`
 
 export const AddTasks = () => {
   const [task, setTask] = useState("");
-  const [show, setShow] = useState(false);
+  const [showTaskMain, setShowTaskMain] = useState(false);
+  const [showProjectOvrelay, setShowProjectOvrelay] = useState(false);
+  const [showTaskDate, setShowTaskDate] = useState(false);
+  const [taskDate, setTaskDate] = useState("");
   const [project, setProject] = useState("");
   const { selectedProject } = useSelectedProjectValue();
 
@@ -81,7 +94,7 @@ export const AddTasks = () => {
           archived: false,
           ProjectId,
           task,
-          date: collatedDate,
+          date: collatedDate || taskDate,
           userId: `${app.auth().currentUser.uid}`
         })
         .then(() => {
@@ -97,11 +110,14 @@ export const AddTasks = () => {
         <span>
           <img className="add-task-icon" src={Plus} alt="" />
         </span>
-        <span className="add-task-title" onClick={() => setShow(!show)}>
+        <span
+          className="add-task-title"
+          onClick={() => setShowTaskMain(!showTaskMain)}
+        >
           Add Task
         </span>
       </div>
-      {show && (
+      {showTaskMain && (
         <>
           <div className="add-task-input-holder">
             <input
@@ -125,16 +141,39 @@ export const AddTasks = () => {
               <button
                 style={{ backgroundColor: " #e8290b" }}
                 type="submit"
-                onClick={() => setShow(!show)}
+                onClick={() => setShowTaskMain(!showTaskMain)}
               >
                 Cancel
               </button>
             </Buttons>
 
             <Options>
-              <img src={calender} />
+              <img
+                src={calender}
+                onClick={() => setShowProjectOvrelay(!showProjectOvrelay)}
+              />
+
+              {showProjectOvrelay && (
+                <ProjectsOverlay
+                  showProjectOvrelay={showProjectOvrelay}
+                  setShowProjectOvrelay={setShowProjectOvrelay}
+                  setProject={setProject}
+                />
+              )}
               <img src={info} />
-              <img src={prroject} />
+              <img
+                src={prroject}
+                onClick={() => setShowTaskDate(!showTaskDate)}
+              />
+
+              {showTaskDate && (
+                <TaskDate
+                  setShowTaskDate={setShowTaskDate}
+                  showTaskDate={showTaskDate}
+                  taskDate={taskDate}
+                  setTaskDate={setTaskDate}
+                />
+              )}
             </Options>
           </Features>
         </>

@@ -3,6 +3,54 @@ import Plus from "../../assets/svg/plusGreen.svg";
 import app from "firebase/app";
 import { useSelectedProjectValue } from "../Contexts";
 import moment from "moment";
+import styled from "styled-components";
+
+import calender from "../../assets/svg/calender.svg";
+import prroject from "../../assets/svg/prroject.svg";
+import info from "../../assets/svg/info.svg";
+
+const Features = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 40rem;
+  margin-top: 1.5rem;
+`;
+const Buttons = styled.div`
+  width: 17rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  justify-content: space-between;
+  flex-direction: row;
+
+  button {
+    color: white;
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 400;
+    cursor: pointer;
+  }
+`;
+const Options = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 9rem;
+  justify-content: space-between;
+
+  img {
+    width: 1.7rem;
+    cursor: pointer;
+  }
+
+  img:last-child {
+    width: 2.4rem;
+  }
+`;
 
 export const AddTasks = () => {
   const [task, setTask] = useState("");
@@ -55,14 +103,40 @@ export const AddTasks = () => {
       </div>
       {show && (
         <>
-          <input
-            value={task}
-            onChange={e => setTask(e.target.value)}
-            type="text"
-          />
-          <button type="submit" onClick={addTask}>
-            Submit
-          </button>
+          <div className="add-task-input-holder">
+            <input
+              value={task}
+              onChange={e => setTask(e.target.value)}
+              type="text"
+              className="add-task-input"
+              placeholder="e.g. Design meeting at 11am p1 #Meeting"
+            />
+          </div>
+
+          <Features>
+            <Buttons>
+              <button
+                style={{ backgroundColor: " var(--color-main)" }}
+                type="submit"
+                onClick={addTask}
+              >
+                Submit
+              </button>
+              <button
+                style={{ backgroundColor: " #e8290b" }}
+                type="submit"
+                onClick={() => setShow(!show)}
+              >
+                Cancel
+              </button>
+            </Buttons>
+
+            <Options>
+              <img src={calender} />
+              <img src={info} />
+              <img src={prroject} />
+            </Options>
+          </Features>
         </>
       )}
     </>

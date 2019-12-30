@@ -1,6 +1,7 @@
 import app from "firebase/app";
 import "firebase/auth";
 import "firebase/firebase-firestore";
+import moment from "moment";
 
 const config = {
   apiKey: "AIzaSyCKNvRcMlGG3qvEFlUkJuXpKbt1TnqG-zM",
@@ -69,6 +70,39 @@ class firebase {
     return new Promise(resolve => {
       app.auth().onAuthStateChanged(resolve);
     });
+  }
+
+  addTask(project, selectedProject, task, setTask, setProject) {
+    const ProjectId = project || selectedProject;
+
+    let collatedDate = "";
+
+    if (ProjectId === "TODAY") {
+      collatedDate = moment().format("DD/MM/YYYY");
+    } else if (ProjectId === "NEXT__7") {
+      collatedDate = moment()
+        .add(7, "days")
+        .format("DD/MM/YYYY");
+    }
+
+    return (
+      task &&
+      ProjectId &&
+      app
+        .firestore()
+        .collection("Tasks")
+        .add({
+          archived: false,
+          ProjectId,
+          task,
+          date: collatedDate,
+          userId: `${app.auth().currentUser.uid}`
+        })
+        .then(() => {
+          setTask("");
+          setProject("");
+        })
+    );
   }
 }
 

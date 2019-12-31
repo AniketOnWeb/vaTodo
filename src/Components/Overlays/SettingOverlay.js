@@ -54,7 +54,6 @@ const Overlay = styled.div`
 const SettingOverlay = ({ showSetting, setShowSetting, project }) => {
   const { projects, setProjects } = useProjectsValue();
   const { setSelectedProject } = useSelectedProjectValue();
-  //   const [archived, setArchived] = useState(initialState);
 
   const archiveProject = docID => {
     app

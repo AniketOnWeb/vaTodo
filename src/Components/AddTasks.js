@@ -150,7 +150,10 @@ export const AddTasks = () => {
             <Options>
               <img
                 src={calender}
-                onClick={() => setShowProjectOvrelay(!showProjectOvrelay)}
+                onClick={() => {
+                  setShowProjectOvrelay(!showProjectOvrelay);
+                  setShowTaskDate(false);
+                }}
               />
 
               {showProjectOvrelay && (
@@ -162,8 +165,12 @@ export const AddTasks = () => {
               )}
               <img src={info} />
               <img
+                style={{ width: "2.4rem" }}
                 src={prroject}
-                onClick={() => setShowTaskDate(!showTaskDate)}
+                onClick={() => {
+                  setShowTaskDate(!showTaskDate);
+                  setShowProjectOvrelay(false);
+                }}
               />
 
               {showTaskDate && (

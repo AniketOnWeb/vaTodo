@@ -22,14 +22,14 @@ export const App = () => {
   return firbaseInitialized !== false ? (
     <Router>
       <Switch>
-        <SelectedColorProvider>
-          <SelectedProjectProvider>
+        <SelectedProjectProvider>
+          <SelectedColorProvider>
             <ProjectsProvider>
               <Route exact path="/" component={Main} />
               <Route exact path="/register" component={Register} />
             </ProjectsProvider>
-          </SelectedProjectProvider>
-        </SelectedColorProvider>
+          </SelectedColorProvider>
+        </SelectedProjectProvider>
       </Switch>
     </Router>
   ) : (

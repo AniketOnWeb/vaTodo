@@ -9,7 +9,14 @@ import app from "firebase/app";
 import firebase from "../../Firebase/firebase";
 import { useSelectedProjectValue } from "../../Contexts";
 import ProjectsOverlay from "../Overlays/ProjectsOverlay";
+import TaskDate from "../TaskDate";
 
+//
+//
+//
+//
+//
+//
 const Features = styled.div`
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -64,12 +71,21 @@ const Options = styled.div`
 const QuickAdd = () => {
   const [show, setShow] = useState(false);
   const [showProjectOvrelay, setShowProjectOvrelay] = useState(false);
+  const [showTaskDate, setShowTaskDate] = useState(false);
+  const [taskDate, setTaskDate] = useState("");
   const [task, setTask] = useState("");
   const [project, setProject] = useState("");
   const { selectedProject } = useSelectedProjectValue();
 
   function addTasK() {
-    firebase.addTask(project, selectedProject, task, setTask, setProject);
+    firebase.addTask(
+      project,
+      selectedProject,
+      task,
+      setTask,
+      setProject,
+      taskDate
+    );
   }
 
   return (
@@ -119,7 +135,10 @@ const QuickAdd = () => {
               <Options>
                 <img
                   src={calender}
-                  onClick={() => setShowProjectOvrelay(!showProjectOvrelay)}
+                  onClick={() => {
+                    setShowProjectOvrelay(!showProjectOvrelay);
+                    setShowTaskDate(false);
+                  }}
                 />
 
                 {showProjectOvrelay && (
@@ -131,7 +150,23 @@ const QuickAdd = () => {
                 )}
 
                 <img src={info} />
-                <img src={prroject} />
+                <img
+                  style={{ width: "2.5rem" }}
+                  src={prroject}
+                  onClick={() => {
+                    setShowTaskDate(!showTaskDate);
+                    setShowProjectOvrelay(false);
+                  }}
+                />
+
+                {showTaskDate && (
+                  <TaskDate
+                    setShowTaskDate={setShowTaskDate}
+                    showTaskDate={showTaskDate}
+                    taskDate={taskDate}
+                    setTaskDate={setTaskDate}
+                  />
+                )}
               </Options>
             </Features>
           </div>

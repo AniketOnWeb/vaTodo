@@ -8,25 +8,25 @@ export const useTasks = selectedProject => {
   const [archivedTasks, setArchivedTasks] = useState([]);
 
   useEffect(() => {
-    let unSubscribe = app
+    let unSelect = app
       .firestore()
       .collection("Tasks")
       .where("userId", "==", `${app.auth().currentUser.uid}`);
 
-    unSubscribe =
+    unSelect =
       selectedProject && !collatedTasksExist(selectedProject)
-        ? (unSubscribe = unSubscribe.where("ProjectId", "==", selectedProject))
+        ? (unSelect = unSelect.where("ProjectId", "==", selectedProject))
         : selectedProject === "TODAY"
-        ? (unSubscribe = unSubscribe.where(
+        ? (unSelect = unSelect.where(
             "date",
             "==",
             moment().format("DD/MM/YYYY")
           ))
         : selectedProject === "INBOX" || selectedProject === 0
-        ? (unSubscribe = unSubscribe.where("date", "==", ""))
-        : unSubscribe;
+        ? (unSelect = unSelect.where("date", "==", ""))
+        : unSelect;
 
-    unSubscribe = unSubscribe.onSnapshot(snapshot => {
+    unSelect = unSelect.onSnapshot(snapshot => {
       const newTasks = snapshot.docs.map(task => ({
         id: task.id,
         ...task.data()
@@ -45,12 +45,16 @@ export const useTasks = selectedProject => {
       setArchivedTasks(newTasks.filter(task => task.archived !== false));
     });
 
-    return () => unSubscribe;
+    return () => unSelect;
   }, [selectedProject]);
 
   return { tasks, archivedTasks };
 };
 
+//
+//
+//
+//
 export const useProjects = () => {
   const [projects, setProjects] = useState([]);
 

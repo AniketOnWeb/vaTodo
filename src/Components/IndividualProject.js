@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useProjectsValue, useSelectedProjectValue } from "../Contexts";
 import ProjectSetting from "../../assets/svg/ProjectSetting.svg";
 import SettingOverlay from "./Overlays/SettingOverlay";
 import app from "firebase/app";

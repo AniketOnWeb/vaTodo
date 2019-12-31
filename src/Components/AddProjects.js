@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import app from "firebase/app";
 import { generatePushId } from "../Helpers";
-import { useProjectsValue, useSelectedColorValue } from "../Contexts";
+import {
+  useProjectsValue,
+  useSelectedColorValue,
+  useSelectedProjectValue
+} from "../Contexts";
 
 //Icon
 import Plus from "../../assets/svg/plus.svg";

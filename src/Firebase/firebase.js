@@ -72,7 +72,7 @@ class firebase {
     });
   }
 
-  addTask(project, selectedProject, task, setTask, setProject) {
+  addTask(project, selectedProject, task, setTask, setProject, taskDate) {
     const ProjectId = project || selectedProject;
 
     let collatedDate = "";
@@ -95,7 +95,7 @@ class firebase {
           archived: false,
           ProjectId,
           task,
-          date: collatedDate,
+          date: collatedDate || taskDate,
           userId: `${app.auth().currentUser.uid}`
         })
         .then(() => {

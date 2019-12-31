@@ -5,6 +5,8 @@ const TaskDate = ({ setTaskDate, taskDate, showTaskDate, setShowTaskDate }) => {
   return (
     <div className="task-date">
       <div className="task-date__list">
+        <div className="task-date-paper-clip"></div>
+
         <h2>Select Priority</h2>
         <li
           onClick={() => {

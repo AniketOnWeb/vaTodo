@@ -11,6 +11,7 @@ import { ExpandArrow } from "../../../assets/svg/all-icons";
 //ADD Project Component
 import { AddProjects } from "../AddProjects";
 import { Projects } from "../Projects";
+import { useSelectedProjectValue } from "../../Contexts";
 
 const Side = styled.div`
   width: 33rem;
@@ -32,6 +33,7 @@ const Middle = styled.div`
 const Sidebar = () => {
   const [active, setActive] = useState("inbox");
   const [showProject, setshowProject] = useState(true);
+  const { setSelectedProject } = useSelectedProjectValue();
 
   //   async function Logout() {
   //     await firebase.logout();
@@ -50,6 +52,7 @@ const Sidebar = () => {
             className={active === "inbox" ? "active" : undefined}
             onClick={() => {
               setActive("inbox");
+              setSelectedProject("INBOX");
             }}
           >
             <span>
@@ -61,6 +64,7 @@ const Sidebar = () => {
             className={active === "today" ? "active" : undefined}
             onClick={() => {
               setActive("today");
+              setSelectedProject("TODAY");
             }}
           >
             <span>
@@ -72,6 +76,7 @@ const Sidebar = () => {
             className={active === "next__7" ? "active" : undefined}
             onClick={() => {
               setActive("next__7");
+              setSelectedProject("NEXT__7");
             }}
           >
             <span>

@@ -1,10 +1,15 @@
 import React, { useState } from "react";
-import { useProjectsValue, useSelectedColorValue } from "../Contexts";
+import {
+  useProjectsValue,
+  useSelectedColorValue,
+  useSelectedProjectValue
+} from "../Contexts";
 import { IndividualProject } from "./IndividualProject";
 
 export const Projects = () => {
   const [active, setActive] = useState("");
   const { projects } = useProjectsValue();
+  const { setSelectedProject } = useSelectedProjectValue();
 
   return (
     <>
@@ -19,6 +24,7 @@ export const Projects = () => {
             }
             onClick={() => {
               setActive(project.ProjectId);
+              setSelectedProject(project.ProjectId);
             }}
           >
             <IndividualProject project={project} />

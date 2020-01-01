@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import DarkMode from "../../../assets/svg/dark.svg";
-// import { Settings } from "../Settings";
+import quickAdd from "../../../assets/svg/quick-add.svg";
 import Logout from "../Auth/Logout";
 import QuickAdd from "../NavbarEle/QuickAdd";
 
@@ -12,15 +12,28 @@ const Nav = styled.div`
 `;
 
 const Navbar = () => {
+  const [showQuickNav, setShowQuickNav] = useState(false);
+
   return (
     <Nav>
-      <QuickAdd />
+      <img
+        src={quickAdd}
+        alt="quick-add"
+        className="navbar__elements navbar__elements-quick"
+        onClick={() => setShowQuickNav(!showQuickNav)}
+      />
       <img
         src={DarkMode}
         alt="dark-mode"
         className="navbar__elements navbar__elements-dark"
       />
       <Logout />
+      {showQuickNav && (
+        <QuickAdd
+          showQuickNav={showQuickNav}
+          setShowQuickNav={setShowQuickNav}
+        />
+      )}
     </Nav>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import DesignGrid from "../../../assets/svg/designgrid.svg";
 import { AddTasks } from "../AddTasks";
@@ -9,6 +9,7 @@ import { collatedTasksExist, getCollatedTitle, getTitle } from "../../Helpers";
 import { useSelectedProjectValue, useProjectsValue } from "../../Contexts";
 import Checkbox from "../Checkbox";
 import TaskClear from "../../../assets/svg/taskClear.svg";
+import QuickAdd from "../NavbarEle/QuickAdd";
 //
 //
 //
@@ -31,6 +32,7 @@ const TaskContent = () => {
   const { selectedProject } = useSelectedProjectValue();
   const { projects } = useProjectsValue();
   const { tasks } = useTasks(selectedProject);
+  const [showQuickTask, setShowQuickTask] = useState(false);
 
   let projectName = "";
   if (collatedTasksExist(selectedProject) && selectedProject) {
@@ -49,7 +51,6 @@ const TaskContent = () => {
   useEffect(() => {
     document.title = `${projectName}: Todoist`;
   });
-
 
   return (
     <>
@@ -81,9 +82,18 @@ const TaskContent = () => {
           <h3 className="tasks__completed-title">
             Looks like everything's organized in the right place.
           </h3>
-          <button className="tasks__completed-button" onClick={() => {}}>
+          <button
+            className="tasks__completed-button"
+            onClick={() => setShowQuickTask(!showQuickTask)}
+          >
             Add Task
           </button>
+          {showQuickTask && (
+            <QuickAdd
+              setShowQuickTask={setShowQuickTask}
+              showQuickTask={showQuickTask}
+            />
+          )}
         </div>
       )}
     </>

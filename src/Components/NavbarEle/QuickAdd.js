@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import quickAdd from "../../../assets/svg/quick-add.svg";
 import Modal from "../../Modals/index";
@@ -68,8 +68,12 @@ const Options = styled.div`
   }
 `;
 
-const QuickAdd = () => {
-  const [show, setShow] = useState(false);
+const QuickAdd = ({
+  showQuickNav,
+  setShowQuickNav,
+  setShowQuickTask,
+  showQuickTask
+}) => {
   const [showProjectOvrelay, setShowProjectOvrelay] = useState(false);
   const [showTaskDate, setShowTaskDate] = useState(false);
   const [taskDate, setTaskDate] = useState("");
@@ -77,7 +81,7 @@ const QuickAdd = () => {
   const [project, setProject] = useState("");
   const { selectedProject } = useSelectedProjectValue();
 
-  function addTasK() {
+  const addTasK = () => {
     firebase.addTask(
       project,
       selectedProject,
@@ -86,23 +90,26 @@ const QuickAdd = () => {
       setProject,
       taskDate
     );
-  }
+  };
 
   return (
     <>
-      <img
-        src={quickAdd}
-        alt="quick-add"
-        className="navbar__elements navbar__elements-quick"
-        onClick={() => setShow(!show)}
-      />
-
-      {show && (
+      {showQuickNav || showQuickTask ? (
         <Modal>
           <div className="add-task__modal">
             <div className="add-task__modal-header">
               <h3>Quick Add Task</h3>
-              <h2 onClick={() => setShow(!show)}>X</h2>
+              <h2
+                onClick={() => {
+                  showQuickTask
+                    ? setShowQuickTask(false)
+                    : showQuickNav
+                    ? setShowQuickNav(false)
+                    : null;
+                }}
+              >
+                X
+              </h2>
             </div>
 
             <div className="add-task__modal-body">
@@ -119,14 +126,27 @@ const QuickAdd = () => {
                 <button
                   style={{ backgroundColor: " var(--color-main)" }}
                   type="submit"
-                  onClick={addTasK}
+                  onClick={() => {
+                    addTasK();
+                    showQuickTask
+                      ? setShowQuickTask(false)
+                      : showQuickNav
+                      ? setShowQuickNav(false)
+                      : null;
+                  }}
                 >
                   Submit
                 </button>
                 <button
                   style={{ backgroundColor: " #e8290b" }}
                   type="submit"
-                  onClick={() => setShow(!show)}
+                  onClick={() => {
+                    showQuickTask
+                      ? setShowQuickTask(false)
+                      : showQuickNav
+                      ? setShowQuickNav(false)
+                      : null;
+                  }}
                 >
                   Cancel
                 </button>
@@ -171,7 +191,7 @@ const QuickAdd = () => {
             </Features>
           </div>
         </Modal>
-      )}
+      ) : null}
     </>
   );
 };

@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 import TaskContent from "./TaskContent";
 
 const TaskComponent = styled.div`
-  min-width: 104rem;
+  min-width: 76vw;
   height: calc(100vh);
   overflow-y: auto;
 `;

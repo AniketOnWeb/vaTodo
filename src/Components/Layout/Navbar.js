@@ -9,6 +9,10 @@ const Nav = styled.div`
   padding: 2.5rem 5rem 2rem 6rem;
   text-align: right;
   border-bottom: 1px solid #1abc9c33;
+
+  /* @media ${props => props.theme.MediaQueries.medium} {
+    padding: 2.5rem 17rem 2rem 6rem;
+  } */
 `;
 
 const Navbar = () => {

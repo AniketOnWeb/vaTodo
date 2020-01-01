@@ -18,6 +18,10 @@ const Side = styled.div`
   background-color: var(--color-main);
   height: calc(100vh);
   text-align: center;
+
+  @media ${props => props.theme.MediaQueries.medium} {
+    display: none;
+  }
 `;
 
 const Generic = styled.div`
@@ -34,11 +38,6 @@ const Sidebar = () => {
   const [active, setActive] = useState("inbox");
   const [showProject, setshowProject] = useState(true);
   const { setSelectedProject } = useSelectedProjectValue();
-
-  //   async function Logout() {
-  //     await firebase.logout();
-  //     history.push("/register");
-  //   }
 
   return (
     <Side>

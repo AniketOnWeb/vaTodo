@@ -59,7 +59,7 @@ export const useProjects = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    let unsubscribe = app
+    let unSubscribe = app
       .firestore()
       .collection("Projects")
       .where("userId", "==", `${app.auth().currentUser.uid}`)
@@ -77,7 +77,7 @@ export const useProjects = () => {
       });
 
     return () => {
-      unsubscribe;
+      unSubscribe;
     };
   }, [projects]);
 

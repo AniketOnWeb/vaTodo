@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import app from "../../Firebase/firebase";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import firebase from "../../Firebase/firebase";
 

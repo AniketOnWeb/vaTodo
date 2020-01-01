@@ -3,6 +3,7 @@ import firebase from "../Firebase/firebase";
 import app from "firebase/app";
 import { withRouter } from "react-router-dom";
 import Content from "../Components/Layout/Content";
+import { ProjectsProvider } from "../Contexts";
 
 const Main = ({ history }) => {
   if (!firebase.getCurrentUser()) {
@@ -11,7 +12,11 @@ const Main = ({ history }) => {
     return null;
   }
 
-  return <Content />;
+  return (
+    <ProjectsProvider>
+      <Content />
+    </ProjectsProvider>
+  );
 };
 
 export default withRouter(Main);

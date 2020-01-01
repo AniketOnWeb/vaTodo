@@ -24,10 +24,10 @@ export const App = () => {
       <Switch>
         <SelectedProjectProvider>
           <SelectedColorProvider>
-            <ProjectsProvider>
-              <Route exact path="/" component={Main} />
-              <Route exact path="/register" component={Register} />
-            </ProjectsProvider>
+            {/* <ProjectsProvider> */}
+            <Route exact path="/" component={Main} />
+            <Route exact path="/register" component={Register} />
+            {/* </ProjectsProvider> */}
           </SelectedColorProvider>
         </SelectedProjectProvider>
       </Switch>

@@ -4,11 +4,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import firebase from "./Firebase/firebase";
 import Register from "./Components/Auth/Register";
 import Main from "./Sections/Main";
-import {
-  ProjectsProvider,
-  SelectedProjectProvider,
-  SelectedColorProvider
-} from "./Contexts";
 
 export const App = () => {
   const [firbaseInitialized, setFirbaseInitialized] = useState(false);
@@ -22,14 +17,8 @@ export const App = () => {
   return firbaseInitialized !== false ? (
     <Router>
       <Switch>
-        <SelectedProjectProvider>
-          <SelectedColorProvider>
-            {/* <ProjectsProvider> */}
-            <Route exact path="/" component={Main} />
-            <Route exact path="/register" component={Register} />
-            {/* </ProjectsProvider> */}
-          </SelectedColorProvider>
-        </SelectedProjectProvider>
+        <Route exact path="/" component={Main} />
+        <Route exact path="/register" component={Register} />
       </Switch>
     </Router>
   ) : (

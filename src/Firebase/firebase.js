@@ -22,9 +22,32 @@ class firebase {
 
   async register(name, email, password) {
     await app.auth().createUserWithEmailAndPassword(email, password);
-    return app.auth().currentUser.updateProfile({
-      displayName: name
-    });
+    return app
+      .firestore()
+      .collection("Projects")
+      .doc()
+      .set({
+        ProjectColor: "/magenta.02121791.svg",
+        ProjectId: "6x9y8z8z",
+        archived: false,
+        name: "WELCOME",
+        userId: `${app.auth().currentUser.uid}`
+      });
+    // .then(
+    //   app
+    //     .firestore()
+    //     .collection("Tasks")
+    //     .add({
+    //       ProjectId: "6x9y8z8z",
+    //       archived: false,
+    //       date: "",
+    //       task: "hi",
+    //       userId: `${app.auth().currentUser.uid}`
+    //     })
+    // );
+    // return app.auth().currentUser.updateProfile({
+    //   displayName: name
+    // });
   }
 
   //Login Existing User

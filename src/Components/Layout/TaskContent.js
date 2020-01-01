@@ -8,6 +8,7 @@ import { collatedTasks } from "../../Constants";
 import { collatedTasksExist, getCollatedTitle, getTitle } from "../../Helpers";
 import { useSelectedProjectValue, useProjectsValue } from "../../Contexts";
 import Checkbox from "../Checkbox";
+import TaskClear from "../../../assets/svg/taskClear.svg";
 //
 //
 //
@@ -49,6 +50,7 @@ const TaskContent = () => {
     document.title = `${projectName}: Todoist`;
   });
 
+
   return (
     <>
       <ProjectName>
@@ -56,18 +58,34 @@ const TaskContent = () => {
         <img src={DesignGrid} />
       </ProjectName>
 
-      <TasksList>
-        <ul className="tasks__list">
-          {tasks.map(task => (
-            <li key={`${task.id}`}>
-              <Checkbox id={task.id} />
-              <span>{task.task}</span>
-            </li>
-          ))}
-        </ul>
+      <AddTasks />
 
-        <AddTasks />
-      </TasksList>
+      {tasks.length !== 0 ? (
+        <TasksList>
+          <ul className="tasks__list">
+            {tasks.map(task => (
+              <li key={`${task.id}`}>
+                <Checkbox id={task.id} />
+                <span>{task.task}</span>
+              </li>
+            ))}
+          </ul>
+        </TasksList>
+      ) : (
+        <div className="tasks__completed">
+          <img
+            src={TaskClear}
+            className="tasks__completed-image"
+            alt="tasks completed"
+          />
+          <h3 className="tasks__completed-title">
+            Looks like everything's organized in the right place.
+          </h3>
+          <button className="tasks__completed-button" onClick={() => {}}>
+            Add Task
+          </button>
+        </div>
+      )}
     </>
   );
 };

@@ -119,70 +119,72 @@ export const AddTasks = () => {
       </div>
       {showTaskMain && (
         <>
-          <div className="add-task-input-holder">
-            <input
-              value={task}
-              onChange={e => setTask(e.target.value)}
-              type="text"
-              className="add-task-input"
-              placeholder="e.g. Design meeting at 11am p1 #Meeting"
-            />
+          <div className="add-task-wrapper">
+            <div className="add-task-input-holder">
+              <input
+                value={task}
+                onChange={e => setTask(e.target.value)}
+                type="text"
+                className="add-task-input"
+                placeholder="e.g. Design meeting at 11am p1 #Meeting"
+              />
+            </div>
+
+            <Features>
+              <Buttons>
+                <button
+                  style={{ backgroundColor: " var(--color-main)" }}
+                  type="submit"
+                  onClick={addTask}
+                >
+                  Submit
+                </button>
+                <button
+                  style={{ backgroundColor: " #e8290b" }}
+                  type="submit"
+                  onClick={() => setShowTaskMain(!showTaskMain)}
+                >
+                  Cancel
+                </button>
+              </Buttons>
+
+              <Options>
+                <img
+                  src={calender}
+                  onClick={() => {
+                    setShowProjectOvrelay(!showProjectOvrelay);
+                    setShowTaskDate(false);
+                  }}
+                />
+
+                {showProjectOvrelay && (
+                  <ProjectsOverlay
+                    showProjectOvrelay={showProjectOvrelay}
+                    setShowProjectOvrelay={setShowProjectOvrelay}
+                    setProject={setProject}
+                  />
+                )}
+                <img src={info} />
+                <img
+                  style={{ width: "2.4rem" }}
+                  src={prroject}
+                  onClick={() => {
+                    setShowTaskDate(!showTaskDate);
+                    setShowProjectOvrelay(false);
+                  }}
+                />
+
+                {showTaskDate && (
+                  <TaskDate
+                    setShowTaskDate={setShowTaskDate}
+                    showTaskDate={showTaskDate}
+                    taskDate={taskDate}
+                    setTaskDate={setTaskDate}
+                  />
+                )}
+              </Options>
+            </Features>
           </div>
-
-          <Features>
-            <Buttons>
-              <button
-                style={{ backgroundColor: " var(--color-main)" }}
-                type="submit"
-                onClick={addTask}
-              >
-                Submit
-              </button>
-              <button
-                style={{ backgroundColor: " #e8290b" }}
-                type="submit"
-                onClick={() => setShowTaskMain(!showTaskMain)}
-              >
-                Cancel
-              </button>
-            </Buttons>
-
-            <Options>
-              <img
-                src={calender}
-                onClick={() => {
-                  setShowProjectOvrelay(!showProjectOvrelay);
-                  setShowTaskDate(false);
-                }}
-              />
-
-              {showProjectOvrelay && (
-                <ProjectsOverlay
-                  showProjectOvrelay={showProjectOvrelay}
-                  setShowProjectOvrelay={setShowProjectOvrelay}
-                  setProject={setProject}
-                />
-              )}
-              <img src={info} />
-              <img
-                style={{ width: "2.4rem" }}
-                src={prroject}
-                onClick={() => {
-                  setShowTaskDate(!showTaskDate);
-                  setShowProjectOvrelay(false);
-                }}
-              />
-
-              {showTaskDate && (
-                <TaskDate
-                  setShowTaskDate={setShowTaskDate}
-                  showTaskDate={showTaskDate}
-                  taskDate={taskDate}
-                  setTaskDate={setTaskDate}
-                />
-              )}
-            </Options>
-          </Features>
         </>
       )}
     </>

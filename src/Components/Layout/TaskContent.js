@@ -16,6 +16,12 @@ import QuickAdd from "../NavbarEle/QuickAdd";
 const ProjectName = styled.div`
   padding: 1rem 5rem;
   border-bottom: 1px solid #1abc9c33;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
   h1 {
     font-size: 2.7rem;

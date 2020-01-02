@@ -26,9 +26,12 @@ export default createGlobalStyle`
             @media ${props => props.theme.MediaQueries.smallest} {
                 font-size : 55%
             }
-                @media ${props => props.theme.MediaQueries.small} {
+            
+            @media ${props => props.theme.MediaQueries.small} {
                 font-size : 60%
             }
+
+
         }
         body{
             font-family: 'Montserrat', sans-serif;

@@ -16,8 +16,16 @@
   font-weight: 300;
 }
 
-//Initialize Loader
+@mixin no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
+//Initialize Loader
 .loader1 {
   position: absolute;
   top: 50%;
@@ -211,12 +219,17 @@
 //====================================
 
 .sidebar {
+  @include no-select();
+
   &-brand {
     margin-top: 1.5rem;
     width: 16rem;
+    @include no-select();
   }
 
   &__generic {
+    @include no-select();
+
     li {
       list-style-type: none;
       display: -webkit-box;
@@ -261,6 +274,7 @@
     cursor: pointer;
     border-bottom: 1px solid #0000001c;
     padding: 2rem;
+    @include no-select();
 
     span:first-of-type {
       margin-right: 1.3rem;
@@ -284,6 +298,7 @@
   }
 
   &__projects {
+    @include no-select();
     list-style: none;
     cursor: pointer;
     padding: 1rem;
@@ -333,6 +348,7 @@
 .add-project {
   margin-top: 3.5rem;
   margin-right: 5.5rem;
+  @include no-select();
 
   span {
     // font-size: 0.2rem;
@@ -454,6 +470,7 @@
 //            MODAL
 //====================================
 #modal {
+  @include no-select();
   background-color: rgba(0, 0, 0, 0.18);
   position: fixed;
   left: 0;
@@ -476,6 +493,7 @@
 .navbar {
   &__elements {
     cursor: pointer;
+    @include no-select();
 
     &:not(:last-child) {
       margin-right: 3rem;
@@ -500,6 +518,7 @@
   &__completed {
     padding: 5rem 4.7rem;
     text-align: center;
+    @include no-select();
 
     &-image {
       width: 26rem;
@@ -526,6 +545,7 @@
   }
 
   &__list {
+    @include no-select();
     li {
       padding: 1rem 0;
       font-size: 1.5rem;
@@ -553,6 +573,7 @@
 //           Add Task
 //====================================
 .add-task {
+  @include no-select();
   display: flex;
   cursor: pointer;
   margin-left: 4.7rem;
@@ -640,6 +661,7 @@
 //           Project Overlay
 //====================================
 .project__overlay {
+  @include no-select();
   position: absolute;
   width: 20rem;
   border-radius: 4px;
@@ -684,6 +706,7 @@
 }
 
 .task-date {
+  @include no-select();
   position: absolute;
   width: 20rem;
   border-radius: 4px;

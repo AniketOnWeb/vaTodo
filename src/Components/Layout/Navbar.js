@@ -4,15 +4,22 @@ import DarkMode from "../../../assets/svg/dark.svg";
 import quickAdd from "../../../assets/svg/quick-add.svg";
 import Logout from "../Auth/Logout";
 import QuickAdd from "../NavbarEle/QuickAdd";
+import Menu from "../../../assets/svg/MENU.svg";
 
 const Nav = styled.div`
-  padding: 2.5rem 5rem 2rem 6rem;
+  padding: 2.5rem 5rem 2rem 5rem;
   text-align: right;
   border-bottom: 1px solid #1abc9c33;
 
-  /* @media ${props => props.theme.MediaQueries.medium} {
-    padding: 2.5rem 17rem 2rem 6rem;
-  } */
+  .navbar-elements-menu {
+    float: left;
+    display: none;
+    cursor: pointer;
+
+    @media ${props => props.theme.MediaQueries.medium} {
+      display: block;
+    }
+  }
 `;
 
 const Navbar = () => {
@@ -20,6 +27,8 @@ const Navbar = () => {
 
   return (
     <Nav>
+      <img src={Menu} alt="menu-icon" className="navbar-elements-menu" />
+
       <img
         src={quickAdd}
         alt="quick-add"

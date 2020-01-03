@@ -27,7 +27,7 @@ const Nav = styled.div`
 
 const Navbar = () => {
   const [showQuickNav, setShowQuickNav] = useState(false);
-  const [showSidebar, setShowSidebar] = useState(false);
+  // const [showSidebar, setShowSidebar] = useState(false);
 
   return (
     <>
@@ -67,8 +67,6 @@ const Navbar = () => {
         </CSSTransition>
         {/* )} */}
       </Nav>
-
-      {showSidebar && <Sidebar />}
     </>
   );
 };

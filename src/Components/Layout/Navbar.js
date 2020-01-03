@@ -5,6 +5,7 @@ import quickAdd from "../../../assets/svg/quick-add.svg";
 import Logout from "../Auth/Logout";
 import QuickAdd from "../NavbarEle/QuickAdd";
 import Menu from "../../../assets/svg/MENU.svg";
+import Sidebar from "../Layout/Sidebar";
 
 const Nav = styled.div`
   padding: 2.5rem 5rem 2rem 5rem;
@@ -24,30 +25,40 @@ const Nav = styled.div`
 
 const Navbar = () => {
   const [showQuickNav, setShowQuickNav] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
 
   return (
-    <Nav>
-      <img src={Menu} alt="menu-icon" className="navbar-elements-menu" />
-
-      <img
-        src={quickAdd}
-        alt="quick-add"
-        className="navbar__elements navbar__elements-quick"
-        onClick={() => setShowQuickNav(!showQuickNav)}
-      />
-      <img
-        src={DarkMode}
-        alt="dark-mode"
-        className="navbar__elements navbar__elements-dark"
-      />
-      <Logout />
-      {showQuickNav && (
-        <QuickAdd
-          showQuickNav={showQuickNav}
-          setShowQuickNav={setShowQuickNav}
+    <>
+      <Nav>
+        <img
+          src={Menu}
+          alt="menu-icon"
+          className="navbar-elements-menu"
+          onClick={() => setShowSidebar(!showSidebar)}
         />
-      )}
-    </Nav>
+
+        <img
+          src={quickAdd}
+          alt="quick-add"
+          className="navbar__elements navbar__elements-quick"
+          onClick={() => setShowQuickNav(!showQuickNav)}
+        />
+        <img
+          src={DarkMode}
+          alt="dark-mode"
+          className="navbar__elements navbar__elements-dark"
+        />
+        <Logout />
+        {showQuickNav && (
+          <QuickAdd
+            showQuickNav={showQuickNav}
+            setShowQuickNav={setShowQuickNav}
+          />
+        )}
+      </Nav>
+
+      {showSidebar && <Sidebar />}
+    </>
   );
 };
 

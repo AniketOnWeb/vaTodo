@@ -4,6 +4,7 @@ import app from "firebase/app";
 import { useSelectedProjectValue } from "../Contexts";
 import moment from "moment";
 import styled from "styled-components";
+import { CSSTransition } from "react-transition-group";
 
 // Icons
 import calender from "../../assets/svg/calender.svg";
@@ -117,8 +118,16 @@ export const AddTasks = () => {
           Add Task
         </span>
       </div>
-      {showTaskMain && (
-        <>
+      {/* {showTaskMain && ( */}
+      <>
+        <CSSTransition
+          in={showTaskMain}
+          classNames="add-task-container"
+          timeout={400}
+          unmountOnExit
+          onEnter={() => setShowTaskMain(true)}
+          onExit={() => setShowTaskMain(false)}
+        >
           <div className="add-task-wrapper">
             <div className="add-task-input-holder">
               <input
@@ -157,13 +166,22 @@ export const AddTasks = () => {
                   }}
                 />
 
-                {showProjectOvrelay && (
+                {/* {showProjectOvrelay && ( */}
+                <CSSTransition
+                  in={showProjectOvrelay}
+                  classNames="project__overlay__wrapper"
+                  timeout={400}
+                  unmountOnExit
+                  onEnter={() => setShowProjectOvrelay(true)}
+                  onExit={() => setShowProjectOvrelay(false)}
+                >
                   <ProjectsOverlay
                     showProjectOvrelay={showProjectOvrelay}
                     setShowProjectOvrelay={setShowProjectOvrelay}
                     setProject={setProject}
                   />
-                )}
+                </CSSTransition>
+                {/* )} */}
                 <img src={info} />
                 <img
                   style={{ width: "2.4rem" }}
@@ -174,19 +192,29 @@ export const AddTasks = () => {
                   }}
                 />
 
-                {showTaskDate && (
+                {/* {showTaskDate && ( */}
+                <CSSTransition
+                  in={showTaskDate}
+                  classNames="task-date__wrapper"
+                  timeout={400}
+                  unmountOnExit
+                  onEnter={() => setShowTaskDate(true)}
+                  onExit={() => setShowTaskDate(false)}
+                >
                   <TaskDate
                     setShowTaskDate={setShowTaskDate}
                     showTaskDate={showTaskDate}
                     taskDate={taskDate}
                     setTaskDate={setTaskDate}
                   />
-                )}
+                </CSSTransition>
+                {/* )} */}
               </Options>
             </Features>
           </div>
-        </>
-      )}
+        </CSSTransition>
+      </>
+      {/* )} */}
     </>
   );
 };

@@ -10,6 +10,8 @@ import { useSelectedProjectValue, useProjectsValue } from "../../Contexts";
 import Checkbox from "../Checkbox";
 import TaskClear from "../../../assets/svg/taskClear.svg";
 import QuickAdd from "../NavbarEle/QuickAdd";
+import { CSSTransition } from "react-transition-group";
+
 //
 //
 //
@@ -94,12 +96,21 @@ const TaskContent = () => {
           >
             Add Task
           </button>
-          {showQuickTask && (
+          {/* {showQuickTask && ( */}
+          <CSSTransition
+            in={showQuickTask}
+            classNames="add-task__modal__wrapper"
+            timeout={400}
+            unmountOnExit
+            onEnter={() => setShowQuickTask(true)}
+            onExit={() => setShowQuickTask(false)}
+          >
             <QuickAdd
               setShowQuickTask={setShowQuickTask}
               showQuickTask={showQuickTask}
             />
-          )}
+          </CSSTransition>
+          {/* )} */}
         </div>
       )}
     </>

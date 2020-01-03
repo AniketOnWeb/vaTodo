@@ -10,6 +10,7 @@ import firebase from "../../Firebase/firebase";
 import { useSelectedProjectValue } from "../../Contexts";
 import ProjectsOverlay from "../Overlays/ProjectsOverlay";
 import TaskDate from "../TaskDate";
+import { CSSTransition } from "react-transition-group";
 
 //
 //
@@ -161,13 +162,22 @@ const QuickAdd = ({
                   }}
                 />
 
-                {showProjectOvrelay && (
+                {/* {showProjectOvrelay && ( */}
+                <CSSTransition
+                  in={showProjectOvrelay}
+                  classNames="add-task__modal__wrapper"
+                  timeout={400}
+                  unmountOnExit
+                  onEnter={() => setShowProjectOvrelay(true)}
+                  onExit={() => setShowProjectOvrelay(false)}
+                >
                   <ProjectsOverlay
                     showProjectOvrelay={showProjectOvrelay}
                     setShowProjectOvrelay={setShowProjectOvrelay}
                     setProject={setProject}
                   />
-                )}
+                  {/* )} */}
+                </CSSTransition>
 
                 <img src={info} />
                 <img
@@ -179,14 +189,23 @@ const QuickAdd = ({
                   }}
                 />
 
-                {showTaskDate && (
+                {/* {showTaskDate && ( */}
+                <CSSTransition
+                  in={showTaskDate}
+                  classNames="project__overlay__wrapper"
+                  timeout={400}
+                  unmountOnExit
+                  onEnter={() => setShowTaskDate(true)}
+                  onExit={() => setShowTaskDate(false)}
+                >
                   <TaskDate
                     setShowTaskDate={setShowTaskDate}
                     showTaskDate={showTaskDate}
                     taskDate={taskDate}
                     setTaskDate={setTaskDate}
                   />
-                )}
+                  {/* )} */}
+                </CSSTransition>
               </Options>
             </Features>
           </div>

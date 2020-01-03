@@ -579,6 +579,30 @@
   margin-left: 4.7rem;
   margin-top: 3.5rem;
 
+  &-container {
+    &-enter {
+      opacity: 0;
+      transform: translateY(-1rem);
+      z-index: -99;
+
+      &-active {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 200ms, transform 200ms;
+      }
+    }
+
+    &-exit {
+      opacity: 1;
+      transform: translateY(0);
+      &-active {
+        opacity: 0;
+        transform: translateY(-1rem);
+        transition: opacity 200ms, transform 200ms;
+      }
+    }
+  }
+
   &-wrapper {
     margin-left: 4.7rem;
   }
@@ -590,6 +614,30 @@
     // position: absolute;
     width: 43rem;
     margin-top: 2rem;
+
+    &__wrapper {
+      &-enter {
+        opacity: 0;
+        transform: translateY(-10rem);
+
+        &-active {
+          opacity: 1;
+          transform: translateY(0);
+          transition: opacity 100ms, transform 100ms;
+        }
+      }
+
+      &-exit {
+        opacity: 1;
+        transform: translateY(0);
+
+        &-active {
+          opacity: 0;
+          transform: translateY(-7rem);
+          transition: opacity 100ms, transform 100ms;
+        }
+      }
+    }
 
     &-header {
       background-color: #c3f3ea;
@@ -672,6 +720,29 @@
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
   background-color: #dcf5f0;
 
+  &__wrapper {
+    &-enter {
+      opacity: 0;
+      transform: translateY(-1rem);
+
+      &-active {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 100ms, transform 100ms;
+      }
+    }
+
+    &-exit {
+      opacity: 1;
+      transform: translateY(0);
+      &-active {
+        opacity: 0;
+        transform: translateY(-1rem);
+        transition: opacity 100ms, transform 100ms;
+      }
+    }
+  }
+
   &-paper-clip {
     position: absolute;
     z-index: 1002;
@@ -716,6 +787,30 @@
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
   background-color: #dcf5f0;
+
+  &__wrapper {
+    &-enter {
+      opacity: 0;
+      transform: translateY(-1.5rem);
+      z-index: -99;
+
+      &-active {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 100ms, transform 100ms;
+      }
+    }
+
+    &-exit {
+      opacity: 1;
+      transform: translateY(0);
+      &-active {
+        opacity: 0;
+        transform: translateY(-1.5rem);
+        transition: opacity 100ms, transform 100ms;
+      }
+    }
+  }
 
   &__list {
     h2 {

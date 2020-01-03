@@ -7,6 +7,8 @@ import QuickAdd from "../NavbarEle/QuickAdd";
 import Menu from "../../../assets/svg/MENU.svg";
 import Sidebar from "../Layout/Sidebar";
 
+import { CSSTransition } from "react-transition-group";
+
 const Nav = styled.div`
   padding: 2.5rem 5rem 2rem 5rem;
   text-align: right;
@@ -49,12 +51,21 @@ const Navbar = () => {
           className="navbar__elements navbar__elements-dark"
         />
         <Logout />
-        {showQuickNav && (
+        {/* {showQuickNav && ( */}
+        <CSSTransition
+          in={showQuickNav}
+          classNames="add-task__modal__wrapper"
+          timeout={400}
+          unmountOnExit
+          onEnter={() => setShowQuickNav(true)}
+          onExit={() => setShowQuickNav(false)}
+        >
           <QuickAdd
             showQuickNav={showQuickNav}
             setShowQuickNav={setShowQuickNav}
           />
-        )}
+        </CSSTransition>
+        {/* )} */}
       </Nav>
 
       {showSidebar && <Sidebar />}

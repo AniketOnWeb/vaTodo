@@ -499,15 +499,19 @@
       margin-right: 3rem;
     }
 
-    &-setting-activeRotation {
-      transform: rotateZ(45deg);
-      transition: all 0.2s ease-in-out;
-      margin-right: 0rem !important;
+    &-setting {
+      width: 1.6rem;
     }
-    &-setting-reverseRotation {
-      transform: rotateZ(0deg);
-      transition: all 0.2s ease-in-out;
-    }
+
+    // &-setting-activeRotation {
+    //   transform: rotateZ(45deg);
+    //   transition: all 0.2s ease-in-out;
+    //   margin-right: 0rem !important;
+    // }
+    // &-setting-reverseRotation {
+    //   transform: rotateZ(0deg);
+    //   transition: all 0.2s ease-in-out;
+    // }
   }
 }
 
@@ -546,25 +550,69 @@
 
   &__list {
     @include no-select();
+    width: 55rem;
+
+    &-features {
+      margin-bottom: 3rem;
+      display: flex;
+      justify-content: space-around;
+      flex-direction: row;
+      width: 10rem;
+
+      &-container {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    &-selectedProject {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #878787b8;
+      display: none;
+      align-self: flex-end;
+    }
+
     li {
-      padding: 1rem 0;
+      padding: 1rem 0 6rem 0;
       font-size: 1.5rem;
-      font-weight: 500;
-      font-family: "Open Sans", sans-serif;
+      font-weight: 400;
       color: var(--color-text);
       display: flex;
       align-items: center;
+      border-bottom: 1px solid #4644444d;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      &:hover .tasks__list-selectedProject {
+        display: block;
+      }
     }
 
     &-checkbox {
       cursor: pointer;
       color: #343434;
-      height: 10px;
-      width: 10px;
+      height: 14px;
+      width: 14px;
       display: inline-block;
       border: 1.5px solid var(--color-main);
       border-radius: 16px;
       margin-right: 1.2rem;
+      transition: all 3s ease-in-out;
+
+      &:hover &--inner {
+        display: block;
+      }
+
+      &--inner {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: #1abc9c8c;
+        display: none;
+      }
     }
   }
 }

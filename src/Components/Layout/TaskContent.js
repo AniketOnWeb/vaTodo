@@ -12,6 +12,10 @@ import TaskClear from "../../../assets/svg/taskClear.svg";
 import QuickAdd from "../NavbarEle/QuickAdd";
 import { CSSTransition } from "react-transition-group";
 
+import calender from "../../../assets/svg/calender.svg";
+import prroject from "../../../assets/svg/prroject.svg";
+import info from "../../../assets/svg/info.svg";
+
 //
 //
 //
@@ -74,8 +78,20 @@ const TaskContent = () => {
           <ul className="tasks__list">
             {tasks.map(task => (
               <li key={`${task.id}`}>
-                <Checkbox id={task.id} />
-                <span>{task.task}</span>
+                <div style={{ alignSelf: "flex-start" }}>
+                  <Checkbox id={task.id} />
+                  <span>{task.task}</span>
+                </div>
+                <div className="tasks__list-features-container">
+                  <div className="tasks__list-features">
+                    <img src={prroject} alt="" />
+                    <img src={info} alt="" />
+                    <img src={calender} alt="" />
+                  </div>
+                  <p className="tasks__list-selectedProject">
+                    • {selectedProject}
+                  </p>
+                </div>
               </li>
             ))}
           </ul>

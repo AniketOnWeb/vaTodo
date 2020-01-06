@@ -14,8 +14,8 @@ import { CSSTransition } from "react-transition-group";
 
 import calender from "../../../assets/svg/calender.svg";
 import prroject from "../../../assets/svg/prroject.svg";
-import info from "../../../assets/svg/info.svg";
-
+import TaskDate from "../TaskDate";
+import ProjectsOverlay from "../Overlays/ProjectsOverlay";
 //
 //
 //
@@ -45,6 +45,10 @@ const TaskContent = () => {
   const { projects } = useProjectsValue();
   const { tasks } = useTasks(selectedProject);
   const [showQuickTask, setShowQuickTask] = useState(false);
+  const [taskDate, setTaskDate] = useState(false);
+  const [showTaskDate, setShowTaskDate] = useState(false);
+  const [showProjectOvrelay, setShowProjectOvrelay] = useState(false);
+  const [project, setProject] = useState("");
 
   let projectName = "";
   if (collatedTasksExist(selectedProject) && selectedProject) {
@@ -82,15 +86,42 @@ const TaskContent = () => {
                   <Checkbox id={task.id} />
                   <span>{task.task}</span>
                 </div>
-                <div className="tasks__list-features-container">
-                  <div className="tasks__list-features">
-                    <img src={prroject} alt="" />
-                    <img src={info} alt="" />
-                    <img src={calender} alt="" />
-                  </div>
-                  <p className="tasks__list-selectedProject">
-                    • {selectedProject}
-                  </p>
+
+                <p className="tasks__list-selectedProject">
+                  ⚪ {selectedProject}
+                </p>
+                <div className="tasks__list-features">
+                  <img
+                    src={prroject}
+                    onClick={() => {
+                      setShowProjectOvrelay(!showProjectOvrelay);
+                      setShowTaskDate(false);
+                    }}
+                  />
+                  {showProjectOvrelay && (
+                    <ProjectsOverlay
+                      showProjectOvrelay={showProjectOvrelay}
+                      setShowProjectOvrelay={setShowProjectOvrelay}
+                      setProject={setProject}
+                    />
+                  )}
+
+                  <img
+                    src={calender}
+                    alt=""
+                    onClick={() => {
+                      setShowTaskDate(!showTaskDate);
+                      setShowProjectOvrelay(false);
+                    }}
+                  />
+                  {showTaskDate && (
+                    <TaskDate
+                      showTaskDate={showTaskDate}
+                      taskDate={TaskDate}
+                      setTaskDate={setTaskDate}
+                      setShowTaskDate={setShowTaskDate}
+                    />
+                  )}
                 </div>
               </li>
             ))}

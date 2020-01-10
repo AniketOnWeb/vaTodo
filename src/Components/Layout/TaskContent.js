@@ -81,7 +81,13 @@ const TaskContent = () => {
         <TasksList>
           <ul className="tasks__list">
             {tasks.map(task => (
-              <li key={`${task.id}`}>
+              <li
+                key={`${task.id}`}
+                // onMouseLeave={() => {
+                //   setShowProjectOvrelay(false);
+                //   setShowTaskDate(false);
+                // }}
+              >
                 <div style={{ alignSelf: "flex-start" }}>
                   <Checkbox id={task.id} />
                   <span>{task.task}</span>

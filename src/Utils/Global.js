@@ -10,18 +10,9 @@ export default createGlobalStyle`
         -moz-osx-font-smoothing: grayscale;
         overflow-y:hidden
         }
-        html{
+       html{
             font-size: 62.5%;
             box-sizing: border-box;
-            --color-main: ${props => props.theme.colors.main};
-            --color-secondary: ${props => props.theme.colors.secondary};
-            --color-intenseBlue: ${props => props.theme.colors.intenseBlue};
-            --color-text: ${props => props.theme.colors.text};
-            --color-white: ${props => props.theme.colors.whiteColor};
-            --color-shadow: ${props => props.theme.colors.shadow};
-            --color-textSmall: ${props => props.theme.colors.textSmall};
-            --color-blackAlt: ${props => props.theme.colors.blackAlt};
-           
            
             @media ${props => props.theme.MediaQueries.smallest} {
                 font-size : 55%
@@ -33,10 +24,23 @@ export default createGlobalStyle`
 
 
         }
+
         body{
             font-family: 'Montserrat', sans-serif;
             line-height : 1.6;
             overflow-x:hidden;
+            --color-main: ${props => props.theme.Lightcolors.main};
+            --color-secondary: ${props => props.theme.Lightcolors.secondary};
+            --color-intenseBlue: ${props =>
+              props.theme.Lightcolors.intenseBlue};
+            --color-text: ${props => props.theme.Lightcolors.text};
+            --color-shadow: ${props => props.theme.Lightcolors.shadow};
+            --color-textSmall: ${props => props.theme.Lightcolors.textSmall};
+            --color-blackAlt: ${props => props.theme.Lightcolors.blackAlt};
+           
+           &.lightMode{
+            --color-base: ${props => props.theme.Lightcolors.base};
+           }
          }
         button ,a , input, textarea{
             outline : none;

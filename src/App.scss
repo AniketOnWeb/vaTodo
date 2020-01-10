@@ -491,9 +491,67 @@
 //           Navbar
 //====================================
 .navbar {
+  &_mode-toggle {
+    &:checked + &-label {
+      background-image: url(../assets//svg/toggle-dark.svg);
+    }
+
+    &:checked + &-label::after {
+      left: calc(102% - 20px);
+      // transform: translateX(-100%);
+      animation: toggle 0.2s ease-in-out;
+
+      @keyframes toggle {
+        0% {
+          transform: translateX(-10%);
+        }
+        50% {
+          transform: translateX(101%);
+        }
+      }
+    }
+
+    &-label {
+      cursor: pointer;
+      font-size: 1.5rem;
+      text-indent: -9999px;
+      width: 49px;
+      height: 20px;
+      border-radius: 50px;
+      background-image: url(../assets/svg/toggle-light_1.svg);
+      background-repeat: no-repeat;
+      position: relative;
+      margin-top: 0.4rem;
+      overflow: hidden;
+
+      &::after {
+        position: absolute;
+        content: "";
+        width: 13px;
+        height: 13px;
+        top: 3px;
+        left: 0.2rem;
+        border-radius: 50%;
+        background-color: var(--color-base);
+        transition: 0.3s;
+      }
+    }
+  }
+
+  &_mode-toggle[type="checkbox"] {
+    visibility: hidden;
+  }
+
   &__elements {
     cursor: pointer;
     @include no-select();
+
+    &-quick {
+      width: 2rem;
+    }
+    &-quicks {
+      width: 4rem;
+    }
 
     &:not(:last-child) {
       margin-right: 3rem;

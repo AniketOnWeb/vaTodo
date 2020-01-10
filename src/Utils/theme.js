@@ -1,12 +1,12 @@
 const theme = {
-  colors: {
+  Lightcolors: {
     main: "#1ABC9C",
     secondary: "#C7F2FD",
     intenseBlue: "#101CCE",
     text: "#5B5B5B",
     textSmall: "#878787",
     blackALt: "#2E2E2E",
-    whiteColor: "#fff",
+    base: "#fff",
     shadow: "#rgba(0,0,0,.2)"
   },
 

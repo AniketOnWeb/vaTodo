@@ -6,7 +6,8 @@ import Content from "../Components/Layout/Content";
 import {
   ProjectsProvider,
   SelectedProjectProvider,
-  SelectedColorProvider
+  SelectedColorProvider,
+  CurrentThemeProvider
 } from "../Contexts";
 
 const Main = ({ history }) => {
@@ -17,13 +18,15 @@ const Main = ({ history }) => {
   }
 
   return (
-    <SelectedProjectProvider>
-      <SelectedColorProvider>
-        <ProjectsProvider>
-          <Content />
-        </ProjectsProvider>
-      </SelectedColorProvider>
-    </SelectedProjectProvider>
+    <CurrentThemeProvider>
+      <SelectedProjectProvider>
+        <SelectedColorProvider>
+          <ProjectsProvider>
+            <Content />
+          </ProjectsProvider>
+        </SelectedColorProvider>
+      </SelectedProjectProvider>
+    </CurrentThemeProvider>
   );
 };
 

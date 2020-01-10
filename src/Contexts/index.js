@@ -5,6 +5,12 @@ import {
 } from "./ProjectsContext";
 
 import {
+  useCurrentTheme,
+  CurrentThemeProvider,
+  CurrentThemeContext
+} from "./DarkThemeContext";
+
+import {
   SelectedProjectContext,
   SelectedProjectProvider,
   useSelectedProjectValue
@@ -25,5 +31,8 @@ export {
   useSelectedProjectValue,
   SelectedColorProvider,
   useSelectedColorValue,
-  SelectedColorContext
+  SelectedColorContext,
+  useCurrentTheme,
+  CurrentThemeProvider,
+  CurrentThemeContext
 };

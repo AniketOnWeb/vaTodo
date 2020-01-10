@@ -109,6 +109,7 @@ const TaskContent = () => {
                       showProjectOvrelay={showProjectOvrelay}
                       setShowProjectOvrelay={setShowProjectOvrelay}
                       setProject={setProject}
+                      task={task}
                     />
                   )}
 

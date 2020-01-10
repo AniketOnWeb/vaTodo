@@ -6,13 +6,10 @@ import app from "firebase/app";
 const ProjectsOverlay = ({
   setShowProjectOvrelay,
   showProjectOvrelay,
-  setProject
+  setProject,
+  task
 }) => {
   const { projects, setProjects } = useProjectsValue();
-  const { selectedProject } = useSelectedProjectValue();
-  const { tasks } = useTasks(selectedProject);
-
-  var arr = tasks.map(task => task.id);
 
   const updateTasks = (ProjectId, docId) => {
     return app
@@ -22,6 +19,7 @@ const ProjectsOverlay = ({
       .update({ ProjectId: ProjectId })
       .then(() => {
         setProjects([...projects]);
+        console.log("done");
       });
   };
 
@@ -38,7 +36,7 @@ const ProjectsOverlay = ({
                 onClick={() => {
                   setProject(project.ProjectId);
                   setShowProjectOvrelay(!showProjectOvrelay);
-                  updateTasks(project.ProjectId, arr);
+                  updateTasks(project.ProjectId, task.id);
                 }}
               >
                 {project.name}

@@ -83,10 +83,10 @@ const TaskContent = () => {
             {tasks.map(task => (
               <li
                 key={`${task.id}`}
-                // onMouseLeave={() => {
-                //   setShowProjectOvrelay(false);
-                //   setShowTaskDate(false);
-                // }}
+                onMouseLeave={() => {
+                  setShowProjectOvrelay(false);
+                  setShowTaskDate(false);
+                }}
               >
                 <div style={{ alignSelf: "flex-start" }}>
                   <Checkbox id={task.id} />
@@ -104,6 +104,25 @@ const TaskContent = () => {
                       setShowTaskDate(false);
                     }}
                   />
+                  <div className="projects__overlay3">
+                    <CSSTransition
+                      in={showProjectOvrelay}
+                      classNames="project__overlay__wrapper"
+                      timeout={400}
+                      unmountOnExit
+                      onEnter={() => setShowProjectOvrelay(true)}
+                      onExit={() => setShowProjectOvrelay(false)}
+                    >
+                      <ProjectsOverlay
+                        showProjectOvrelay={showProjectOvrelay}
+                        setShowProjectOvrelay={setShowProjectOvrelay}
+                        setProject={setProject}
+                        task={task}
+                      />
+                    </CSSTransition>
+                  </div>
+
+                  {/*                   
                   {showProjectOvrelay && (
                     <ProjectsOverlay
                       showProjectOvrelay={showProjectOvrelay}
@@ -111,7 +130,7 @@ const TaskContent = () => {
                       setProject={setProject}
                       task={task}
                     />
-                  )}
+                  )} */}
 
                   <img
                     src={calender}
@@ -121,14 +140,24 @@ const TaskContent = () => {
                       setShowProjectOvrelay(false);
                     }}
                   />
-                  {showTaskDate && (
-                    <TaskDate
-                      showTaskDate={showTaskDate}
-                      taskDate={TaskDate}
-                      setTaskDate={setTaskDate}
-                      setShowTaskDate={setShowTaskDate}
-                    />
-                  )}
+
+                  <div className="task__date3">
+                    <CSSTransition
+                      in={showTaskDate}
+                      classNames="task-date__wrapper"
+                      timeout={400}
+                      unmountOnExit
+                      onEnter={() => setShowTaskDate(true)}
+                      onExit={() => setShowTaskDate(false)}
+                    >
+                      <TaskDate
+                        showTaskDate={showTaskDate}
+                        taskDate={TaskDate}
+                        setTaskDate={setTaskDate}
+                        setShowTaskDate={setShowTaskDate}
+                      />
+                    </CSSTransition>
+                  </div>
                 </div>
               </li>
             ))}

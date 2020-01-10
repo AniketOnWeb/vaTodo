@@ -158,6 +158,23 @@ export const AddTasks = () => {
               </Buttons>
 
               <Options>
+                <div className="projects__overlay2">
+                  <CSSTransition
+                    in={showProjectOvrelay}
+                    classNames="project__overlay__wrapper"
+                    timeout={400}
+                    unmountOnExit
+                    onEnter={() => setShowProjectOvrelay(true)}
+                    onExit={() => setShowProjectOvrelay(false)}
+                  >
+                    <ProjectsOverlay
+                      showProjectOvrelay={showProjectOvrelay}
+                      setShowProjectOvrelay={setShowProjectOvrelay}
+                      setProject={setProject}
+                    />
+                  </CSSTransition>
+                </div>
+
                 <img
                   src={calender}
                   onClick={() => {
@@ -166,22 +183,6 @@ export const AddTasks = () => {
                   }}
                 />
 
-                {/* {showProjectOvrelay && ( */}
-                <CSSTransition
-                  in={showProjectOvrelay}
-                  classNames="project__overlay__wrapper"
-                  timeout={400}
-                  unmountOnExit
-                  onEnter={() => setShowProjectOvrelay(true)}
-                  onExit={() => setShowProjectOvrelay(false)}
-                >
-                  <ProjectsOverlay
-                    showProjectOvrelay={showProjectOvrelay}
-                    setShowProjectOvrelay={setShowProjectOvrelay}
-                    setProject={setProject}
-                  />
-                </CSSTransition>
-                {/* )} */}
                 <img src={info} />
                 <img
                   style={{ width: "2.4rem" }}
@@ -192,29 +193,28 @@ export const AddTasks = () => {
                   }}
                 />
 
-                {/* {showTaskDate && ( */}
-                <CSSTransition
-                  in={showTaskDate}
-                  classNames="task-date__wrapper"
-                  timeout={400}
-                  unmountOnExit
-                  onEnter={() => setShowTaskDate(true)}
-                  onExit={() => setShowTaskDate(false)}
-                >
-                  <TaskDate
-                    setShowTaskDate={setShowTaskDate}
-                    showTaskDate={showTaskDate}
-                    taskDate={taskDate}
-                    setTaskDate={setTaskDate}
-                  />
-                </CSSTransition>
-                {/* )} */}
+                <div className="task__date2">
+                  <CSSTransition
+                    in={showTaskDate}
+                    classNames="task-date__wrapper"
+                    timeout={400}
+                    unmountOnExit
+                    onEnter={() => setShowTaskDate(true)}
+                    onExit={() => setShowTaskDate(false)}
+                  >
+                    <TaskDate
+                      setShowTaskDate={setShowTaskDate}
+                      showTaskDate={showTaskDate}
+                      taskDate={taskDate}
+                      setTaskDate={setTaskDate}
+                    />
+                  </CSSTransition>
+                </div>
               </Options>
             </Features>
           </div>
         </CSSTransition>
       </>
-      {/* )} */}
     </>
   );
 };

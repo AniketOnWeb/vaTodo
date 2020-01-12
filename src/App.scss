@@ -1,6 +1,28 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: 37.5em) {
+      @content;
+    } //to calculate em for 600 :-  600/16 = 37.5em
+  }
+  @if $breakpoint == tab-port {
+    @media (max-width: 56.25em) {
+      @content;
+    } //900px
+  }
+  @if $breakpoint == tab-land {
+    @media (max-width: 75em) {
+      @content;
+    } //1200px
+  }
+  @if $breakpoint == big-desktop {
+    @media (min-width: 112.5em) {
+      @content;
+    }
+  }
+}
+
 @mixin btn($color) {
   width: 19rem;
-  margin-left: 22rem;
   padding: 1.5rem;
   display: inline-block;
   background-color: $color;
@@ -67,7 +89,7 @@
   &-text__container {
     background-color: var(--color-secondary);
     width: 32rem;
-    margin-left: 27%;
+    align-self: center;
   }
 
   &-text {
@@ -80,9 +102,18 @@
   &-form {
     display: flex;
     flex-direction: column;
-    margin: 4rem;
     justify-content: space-evenly;
-    height: 47rem;
+    align-items: center;
+
+    @include respond(phone) {
+      padding-bottom: 1.5rem;
+    }
+
+    &__group {
+      &:not(:last-child) {
+        margin-bottom: 1.5rem;
+      }
+    }
 
     &__input {
       font-size: 1.4rem;
@@ -95,8 +126,8 @@
       -webkit-transition: all 0.2s;
       transition: all 0.2s;
       background-color: transparent;
-      margin-left: 24%;
-      width: 47%;
+      align-self: center;
+      width: 30rem;
 
       &:focus {
         outline: none;
@@ -113,7 +144,8 @@
       font-size: 1.2rem;
       display: block;
       font-weight: 700;
-      margin-left: -23rem;
+      // margin-left: -23rem;
+      align-self: center;
       margin-top: 1.3rem;
       -webkit-transition: all 0.3s;
       transition: all 0.3s;
@@ -150,11 +182,19 @@
     z-index: -9;
     transform: rotate(90deg) translateX(-32rem);
 
+    @include respond(phone) {
+      display: none;
+    }
+
     &-2 {
       position: absolute;
       transform: rotate(90deg) translateX(11rem);
       right: 25.7rem;
       z-index: -11;
+
+      @include respond(phone) {
+        display: none;
+      }
     }
   }
 
@@ -162,30 +202,47 @@
     position: absolute;
     top: 21rem;
     left: 7rem;
+    @include respond(phone) {
+      display: none;
+    }
   }
   &-halfCircle {
     position: absolute;
     top: -0.2rem;
     left: 54rem;
+    @include respond(phone) {
+      display: none;
+    }
   }
   &-triangle {
     left: 62rem;
     position: absolute;
     top: 39rem;
+    @include respond(phone) {
+      display: none;
+    }
   }
   &-square {
     position: absolute;
     top: 48rem;
     left: -3rem;
+    @include respond(phone) {
+      display: none;
+    }
   }
 }
 
 //Login
 .log {
+  &__head {
+    display: flex;
+    flex-direction: column;
+  }
+
   &-title__container {
     background-color: white;
     width: 30rem;
-    margin-left: 20rem;
+    align-self: center;
 
     h1 {
       font-size: 2.4rem;
@@ -199,6 +256,11 @@
   }
 
   &-form {
+    &__group {
+      &:not(:last-child) {
+        margin-bottom: 1.5rem;
+      }
+    }
     &__input {
       background-color: transparent;
     }
@@ -210,6 +272,14 @@
       color: var(--color-intenseBlue);
       font-weight: 600;
       z-index: 13;
+
+      &-2 {
+        display: none;
+        margin-top: 1.2rem;
+        @include respond(phone) {
+          display: inline-block;
+        }
+      }
     }
   }
 }

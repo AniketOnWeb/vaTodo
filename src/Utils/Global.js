@@ -8,7 +8,11 @@ export default createGlobalStyle`
         padding:0;
         -webkit-font-smoothing: antiliased;
         -moz-osx-font-smoothing: grayscale;
-        overflow-y:hidden
+        overflow-y:hidden;
+        @media ${props => props.theme.MediaQueries.small} {
+                overflow-y :auto;
+            }
+
         }
        html{
             font-size: 62.5%;
@@ -22,7 +26,7 @@ export default createGlobalStyle`
                 font-size : 60%
             }
 
-
+            scroll-behavior:smooth;
         }
 
         body{

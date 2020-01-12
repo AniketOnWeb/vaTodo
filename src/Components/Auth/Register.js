@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { withRouter } from "react-router-dom";
+import ReactDOM from "react-dom";
 import styled from "styled-components";
 import firebase from "../../Firebase/firebase";
 
@@ -12,30 +13,69 @@ import triangle from "../../../assets/svg/triangle.svg";
 
 const RegLogin = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
   height: 100vh;
+
+  @media ${props => props.theme.MediaQueries.small} {
+    flex-direction: column;
+    height: 100%;
+  }
 `;
 const RegForm = styled.div`
-  margin-top: 4rem;
   width: 50vw;
+
+  @media ${props => props.theme.MediaQueries.small} {
+    width: 100%;
+    height: 100%;
+  }
 `;
 const LoginForm = styled.div`
   width: 50vw;
   background-color: var(--color-secondary);
   z-index: 10;
+
+  @media ${props => props.theme.MediaQueries.small} {
+    width: 100%;
+    height: 100%;
+  }
 `;
 const RegContent = styled.div`
   text-align: center;
+
+  .register__wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 0;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+
+    @media ${props => props.theme.MediaQueries.small} {
+      height: 100vh;
+    }
+  }
 `;
 const LoginContent = styled.div`
-  text-align: center;
-  margin-top: 4.3rem;
-`;
-const Form = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 4rem 0;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+
+  @media ${props => props.theme.MediaQueries.small} {
+    height: 100vh;
+  }
 `;
+const Form = styled.div`
+  align-self: center;
+  margin-top: 9rem;
+
+  @media ${props => props.theme.MediaQueries.small} {
+    padding-bottom: 1.5rem;
+  }
+`;
+
+const scrollToRef = ref => window.scrollTo(0, ref.current.offsetTop);
 
 const Register = ({ history }) => {
   //For Registration
@@ -68,6 +108,12 @@ const Register = ({ history }) => {
     }
   }
 
+  const myRef = useRef(null);
+
+  const slide = () => {
+    scrollToRef(myRef);
+  };
+
   return (
     <RegLogin>
       <RegForm>
@@ -77,86 +123,103 @@ const Register = ({ history }) => {
           <img src={halfCircle} className="design-halfCircle" />
           <img src={triangle} className="design-triangle" />
           <img src={square} className="design-square" />
-          <h1 className="reg-title">Get Started</h1>
-          <div className="reg-text__container">
-            <p className="reg-text">by creating your personal account</p>
-          </div>
-          <Form>
-            <form
-              className="reg-form"
-              onSubmit={e => {
-                e.preventDefault();
-              }}
-            >
-              <div className="reg-form__group">
-                <input
-                  className="reg-form__input"
-                  type="name"
-                  placeholder="Name"
-                  name="name"
-                  autoComplete="disable"
-                  id="name"
-                  value={name}
-                  onChange={e => setName(e.target.value)}
-                  required
-                />
-                <label htmlFor="name" className="reg-form__label">
-                  Name
-                </label>
-              </div>
 
-              <div className="reg-form__group">
-                <input
-                  className="reg-form__input"
-                  type="email"
-                  placeholder="Email"
-                  autoComplete="disable"
-                  name="email"
-                  id="email"
-                  value={regemail}
-                  onChange={e => setRegEmail(e.target.value)}
-                  required
-                />
-                <label htmlFor="email" className="reg-form__label">
-                  Email
-                </label>
+          <div className="register__wrapper">
+            <div className="log__head">
+              <h1 className="reg-title">Get Started</h1>
+              <div className="reg-text__container">
+                <p className="reg-text">by creating your personal account</p>
               </div>
+            </div>
+            <Form>
+              <form
+                className="reg-form"
+                onSubmit={e => {
+                  e.preventDefault();
+                }}
+              >
+                <div className="reg-form__group">
+                  <input
+                    className="reg-form__input"
+                    type="name"
+                    placeholder="Name"
+                    name="name"
+                    autoComplete="disable"
+                    id="name"
+                    value={name}
+                    onChange={e => setName(e.target.value)}
+                    required
+                  />
+                  <label htmlFor="name" className="reg-form__label">
+                    Name
+                  </label>
+                </div>
 
-              <div className="reg-form__group">
-                <input
-                  className="reg-form__input"
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  id="regpassword"
-                  value={regpassword}
-                  onChange={e => setRegPassword(e.target.value)}
-                  required
-                />
-                <label htmlFor="regpassword" className="reg-form__label">
-                  Password
-                </label>
-              </div>
+                <div className="reg-form__group">
+                  <input
+                    className="reg-form__input"
+                    type="email"
+                    placeholder="Email"
+                    autoComplete="disable"
+                    name="email"
+                    id="email"
+                    value={regemail}
+                    onChange={e => setRegEmail(e.target.value)}
+                    required
+                  />
+                  <label htmlFor="email" className="reg-form__label">
+                    Email
+                  </label>
+                </div>
+
+                <div className="reg-form__group">
+                  <input
+                    className="reg-form__input"
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    id="regpassword"
+                    value={regpassword}
+                    onChange={e => setRegPassword(e.target.value)}
+                    required
+                  />
+                  <label htmlFor="regpassword" className="reg-form__label">
+                    Password
+                  </label>
+                </div>
+
+                <button
+                  className="reg-form__button"
+                  type="submit"
+                  onClick={onRegister}
+                >
+                  Sign Up
+                </button>
+              </form>
+
+              <p>OR</p>
 
               <button
-                className="reg-form__button"
-                type="submit"
-                onClick={onRegister}
+                className="reg-form__button log-form__button log-form__button-2"
+                onClick={() => slide()}
               >
-                Sign Up
+                Login
               </button>
-            </form>
-          </Form>
+            </Form>
+          </div>
         </RegContent>
       </RegForm>
 
-      <LoginForm>
+      <LoginForm ref={myRef}>
         <LoginContent>
-          <div className="log-title__container">
-            <h1>Already a Member?</h1>
+          <div className="log__head">
+            <div className="log-title__container">
+              <h1>Already a Member?</h1>
+            </div>
+            <p className="log-text">Great to see you back!</p>
           </div>
-          <p className="log-text">Great to see you back!</p>
-          <Form>
+
+          <Form className="for-log">
             <form
               className="reg-form log-form"
               onSubmit={e => {
@@ -203,6 +266,7 @@ const Register = ({ history }) => {
               </div>
 
               <button
+                style={{ marginTop: "2rem" }}
                 className="reg-form__button log-form__button"
                 type="submit"
                 onClick={Login}

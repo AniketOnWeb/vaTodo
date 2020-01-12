@@ -27,7 +27,7 @@ class firebase {
       .collection("Projects")
       .doc()
       .set({
-        ProjectColor: "/magenta.02121791.svg",
+        ProjectColor: "magenta.e58fbd76.svg",
         ProjectId: "6x9y8z8z",
         archived: false,
         name: "WELCOME",

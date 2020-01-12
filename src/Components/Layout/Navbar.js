@@ -47,7 +47,12 @@ const Navbar = () => {
           />
 
           {/* <DarkMode darkTheme={darkTheme} setDarkTheme={setDarkTheme} /> */}
-          <img style={{ marginRight: "3rem" }} src={DarkMode} alt="" />
+          <img
+            style={{ marginRight: "3rem", width: "2rem" }}
+            src={DarkMode}
+            alt=""
+          />
+
           <Logout />
         </div>
 

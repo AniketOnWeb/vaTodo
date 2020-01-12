@@ -197,7 +197,7 @@ const Register = ({ history }) => {
                 </button>
               </form>
 
-              <p>OR</p>
+              <p className="reg-form__or">OR</p>
 
               <button
                 className="reg-form__button log-form__button log-form__button-2"

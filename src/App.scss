@@ -109,6 +109,13 @@
       padding-bottom: 1.5rem;
     }
 
+    &__or {
+      display: none;
+      @include respond(phone) {
+        display: block;
+      }
+    }
+
     &__group {
       &:not(:last-child) {
         margin-bottom: 1.5rem;
@@ -183,7 +190,7 @@
     transform: rotate(90deg) translateX(-32rem);
 
     @include respond(phone) {
-      display: none;
+      transform: rotate(90deg) translateX(-25rem);
     }
 
     &-2 {
@@ -261,6 +268,7 @@
         margin-bottom: 1.5rem;
       }
     }
+
     &__input {
       background-color: transparent;
     }

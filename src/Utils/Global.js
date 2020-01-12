@@ -11,6 +11,7 @@ export default createGlobalStyle`
         overflow-y:hidden;
         @media ${props => props.theme.MediaQueries.small} {
                 overflow-y :auto;
+                overflow-x:hidden;
             }
 
         }

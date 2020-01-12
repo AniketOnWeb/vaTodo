@@ -190,7 +190,7 @@
     transform: rotate(90deg) translateX(-32rem);
 
     @include respond(phone) {
-      transform: rotate(90deg) translateX(-25rem);
+      display: none;
     }
 
     &-2 {

@@ -19,7 +19,9 @@ export const ProjectColorOverlay = ({
   showDropDown,
   setShowDropDown,
   ProjectColor,
-  setProjectColor
+  setProjectColor,
+  setActiveProjectColor,
+  setActiveProjectColorValue
 }) => {
   return (
     <ColorOverlay>
@@ -31,6 +33,8 @@ export const ProjectColorOverlay = ({
           onClick={() => {
             setProjectColor(project.color);
             setShowDropDown(!showDropDown);
+            setActiveProjectColor(project.name);
+            setActiveProjectColorValue(project.color);
           }}
         >
           <span>

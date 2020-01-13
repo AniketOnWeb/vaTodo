@@ -65,7 +65,7 @@ const TaskContent = () => {
   }
 
   useEffect(() => {
-    document.title = `${projectName}: Todoist`;
+    document.title = `${projectName}: vaTodo`;
   });
 
   return (
@@ -122,16 +122,6 @@ const TaskContent = () => {
                     </CSSTransition>
                   </div>
 
-                  {/*                   
-                  {showProjectOvrelay && (
-                    <ProjectsOverlay
-                      showProjectOvrelay={showProjectOvrelay}
-                      setShowProjectOvrelay={setShowProjectOvrelay}
-                      setProject={setProject}
-                      task={task}
-                    />
-                  )} */}
-
                   <img
                     src={calender}
                     alt=""
@@ -179,7 +169,6 @@ const TaskContent = () => {
           >
             Add Task
           </button>
-          {/* {showQuickTask && ( */}
           <CSSTransition
             in={showQuickTask}
             classNames="add-task__modal__wrapper"
@@ -193,7 +182,6 @@ const TaskContent = () => {
               showQuickTask={showQuickTask}
             />
           </CSSTransition>
-          {/* )} */}
         </div>
       )}
     </>

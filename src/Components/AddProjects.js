@@ -41,8 +41,11 @@ const DropDown = styled.div`
       color: #82807e;
       letter-spacing: 0.3;
       font-weight: 500;
-      width: 4.7rem;
       justify-content: space-between;
+
+      img {
+        margin-right: 0.9rem;
+      }
     }
   }
 `;
@@ -53,6 +56,10 @@ export const AddProjects = ({ shouldShow = false }) => {
   const [showModal, setShowModal] = useState(false);
   const [showDropDown, setShowDropDown] = useState(false);
   const [ProjectColor, setProjectColor] = useState("");
+  const [activeProjectColor, setActiveProjectColor] = useState("SALMON");
+  const [activeProjectColorValue, setActiveProjectColorValue] = useState(
+    Salmon
+  );
 
   //will generate random Project Id
   const ProjectId = generatePushId();
@@ -113,7 +120,8 @@ export const AddProjects = ({ shouldShow = false }) => {
 
                 <DropDown onClick={() => setShowDropDown(!showDropDown)}>
                   <span>
-                    <img src={Salmon} /> Salmon
+                    <img src={activeProjectColorValue} />
+                    {activeProjectColor}
                   </span>
                   <span className="add-project__modal-body-dropdown">
                     <ExpandArrow />
@@ -127,11 +135,19 @@ export const AddProjects = ({ shouldShow = false }) => {
                     setShowDropDown={setShowDropDown}
                     ProjectColor={ProjectColor}
                     setProjectColor={setProjectColor}
+                    setActiveProjectColor={setActiveProjectColor}
+                    setActiveProjectColorValue={setActiveProjectColorValue}
                   />
                 )}
               </div>
               <div className="add-project__modal-action">
-                <button type="submit" onClick={() => addProject()}>
+                <button
+                  type="submit"
+                  onClick={() => {
+                    addProject();
+                    setShowModal(!showModal);
+                  }}
+                >
                   Add
                 </button>
                 <button

@@ -50,15 +50,15 @@
 //Initialize Loader
 .loader1 {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 48%;
+  left: 48%;
   height: 5rem;
   width: 5rem;
   background-color: transparent;
   border-radius: 50%;
   border: 0.5em solid;
   animation: dual-ring cubic-bezier(0.88, 0.11, 0, 0.45) infinite 2s;
-  transform: translate(-50%, -50%);
+  // transform: translate(-50%, -50%);
 }
 
 @keyframes dual-ring {

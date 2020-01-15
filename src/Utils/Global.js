@@ -15,7 +15,7 @@ export default createGlobalStyle`
             }
         }
        html{
-            font-size: 56.5%;
+            font-size: 62.5%;
             box-sizing: border-box;
            
             @media ${props => props.theme.MediaQueries.smallest} {

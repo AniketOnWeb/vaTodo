@@ -689,7 +689,7 @@
     width: 55rem;
 
     @include respond(phone) {
-      width: 29rem;
+      width:inherit;
     }
 
     &-features {

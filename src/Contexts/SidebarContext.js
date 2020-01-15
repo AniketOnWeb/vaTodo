@@ -4,9 +4,21 @@ import PropTypes from "prop-types";
 export const SidebarContext = createContext();
 
 export const SidebarProvider = ({ children }) => {
-  const [showSidebar, setShowSidebar] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(true);
+  const [bigScreen, setBigScreen] = useState(true);
+  const [activeClass, setActiveClass] = useState(false);
+
   return (
-    <SidebarContext.Provider value={{ showSidebar, setShowSidebar }}>
+    <SidebarContext.Provider
+      value={{
+        showSidebar,
+        setShowSidebar,
+        bigScreen,
+        setBigScreen,
+        activeClass,
+        setActiveClass
+      }}
+    >
       {children}
     </SidebarContext.Provider>
   );

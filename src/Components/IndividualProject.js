@@ -9,6 +9,10 @@ const Container = styled.div`
 
   span:first-of-type {
     margin-right: 8rem;
+
+    @media ${props => props.theme.MediaQueries.medium} {
+      margin-right: 5.5rem;
+    }
   }
 `;
 

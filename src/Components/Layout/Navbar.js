@@ -40,7 +40,12 @@ const Nav = styled.div`
 const Navbar = () => {
   const [showQuickNav, setShowQuickNav] = useState(false);
   const [darkTheme, setDarkTheme] = useState(false);
-  const { showSidebar, setShowSidebar } = useSidebarValue();
+  const {
+    bigScreen,
+    setBigScreen,
+    activeClass,
+    setActiveClass
+  } = useSidebarValue();
 
   return (
     <>
@@ -50,10 +55,13 @@ const Navbar = () => {
             src={Menu}
             alt="menu-icon"
             className="navbar-elements-menu"
-            onClick={() => setShowSidebar(!showSidebar)}
+            onClick={() => {
+              // setBigScreen(!bigScreen);
+              setActiveClass(!activeClass);
+            }}
           />
-
-          {/* {showSidebar && (
+          {/* 
+          {bigScreen && (
             <div className="show-Sidebar">
               <Sidebar />
             </div>

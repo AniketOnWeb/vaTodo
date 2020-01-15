@@ -303,6 +303,10 @@
     margin-top: 1.5rem;
     width: 16rem;
     @include no-select();
+
+    @include respond(phone) {
+      display: none;
+    }
   }
 
   &__generic {
@@ -415,6 +419,20 @@
     &:first-of-type {
       margin-top: 1.5rem;
     }
+  }
+}
+
+.active-sidebar {
+  @include respond(phone) {
+    position: absolute;
+    width: 24rem !important;
+    z-index: 99;
+    transform: translate(-1rem, 62px);
+  }
+}
+.no-active-sidebar {
+  @include respond(phone) {
+    display: none;
   }
 }
 

@@ -21,11 +21,8 @@ const Side = styled.div`
   text-align: center;
 
   @media ${props => props.theme.MediaQueries.medium} {
-    /* display: none; */
-    position: absolute;
-    width: 21rem;
-    z-index: 99;
-    transform: translate(-13rem, 62px);
+    /* position: absolute; */
+    /* transform: translate(-1rem, 62px); */
   }
 `;
 
@@ -61,16 +58,22 @@ const Sidebar = () => {
   const [active, setActive] = useState("inbox");
   const [showProject, setshowProject] = useState(true);
   const { setSelectedProject } = useSelectedProjectValue();
-  const { showSidebar, setShowSidebar } = useSidebarValue();
-  const [bigScreen, setBigScreen] = useState();
+  const {
+    showSidebar,
+    setShowSidebar,
+    bigScreen,
+    setBigScreen,
+    activeClass,
+    setActiveClass
+  } = useSidebarValue();
 
-  useEffect(() => {
-    setShowSidebar(true);
-  }, [bigScreen]);
+  // useEffect(() => {
+  //   setShowSidebar(true);
+  // }, [bigScreen]);
 
   return (
     showSidebar && (
-      <Side>
+      <Side className={activeClass ? "active-sidebar" : "no-active-sidebar"}>
         <Container>
           {/* Logo Sidebar */}
           <img src={brand} className="sidebar-brand" />

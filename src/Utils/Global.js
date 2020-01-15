@@ -13,10 +13,9 @@ export default createGlobalStyle`
                 overflow-y :auto;
                 overflow-x:hidden;
             }
-
         }
        html{
-            font-size: 62.5%;
+            font-size: 56.5%;
             box-sizing: border-box;
            
             @media ${props => props.theme.MediaQueries.smallest} {

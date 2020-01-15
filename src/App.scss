@@ -818,33 +818,12 @@
     background-color: #dcf5f0;
     border-radius: 0.8rem;
     right: 19rem;
-    // position: absolute;
     width: 43rem;
     margin-top: 2rem;
 
-    // &__wrapper {
-    //   &-enter {
-    //     opacity: 0;
-    //     transform: translateY(-10rem);
-
-    //     &-active {
-    //       opacity: 1;
-    //       transform: translateY(0);
-    //       transition: opacity 100ms, transform 9990ms;
-    //     }
-    //   }
-
-    //   &-exit {
-    //     opacity: 1;
-    //     transform: translateY(0);
-
-    //     &-active {
-    //       opacity: 0;
-    //       transform: translateY(-7rem);
-    //       transition: opacity 100ms, transform 100ms;
-    //     }
-    //   }
-    // }
+    @include respond(phone) {
+      width: 37rem;
+    }
 
     &-header {
       background-color: #c3f3ea;
@@ -875,6 +854,11 @@
         border: none;
         border-radius: 0.4rem;
         padding-left: 1rem;
+
+        @include respond(phone) {
+          width: 30rem;
+          padding: 0.9rem 1rem;
+        }
       }
     }
 

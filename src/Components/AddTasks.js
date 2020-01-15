@@ -24,8 +24,12 @@ const Features = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 33.5rem;
+  width: 100%;
   margin-top: 1.5rem;
+
+  @media ${props => props.theme.MediaQueries.smallest} {
+    width: 100%;
+  }
 `;
 const Buttons = styled.div`
   width: 17rem;

@@ -18,7 +18,7 @@ const Nav = styled.div`
   justify-content: space-between;
 
   @media ${props => props.theme.MediaQueries.medium} {
-    padding: 2.5rem 3.5rem 2rem 3.5rem;
+    padding: 2rem;
   }
 
   div:first-child {

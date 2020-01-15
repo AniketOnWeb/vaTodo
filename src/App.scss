@@ -656,7 +656,7 @@
 //====================================
 .tasks {
   &__completed {
-    padding: 5rem 4.7rem;
+    // padding: 5rem 4.7rem;
     text-align: center;
     @include no-select();
 
@@ -689,7 +689,7 @@
     width: 55rem;
 
     @include respond(phone) {
-      width: 33rem;
+      width: 29rem;
     }
 
     &-features {
@@ -783,8 +783,6 @@
   @include no-select();
   display: flex;
   cursor: pointer;
-  margin-left: 4.7rem;
-  margin-top: 3.5rem;
 
   &-container {
     &-enter {
@@ -811,7 +809,11 @@
   }
 
   &-wrapper {
-    margin-left: 4.7rem;
+    width: 55rem;
+
+    @include respond(phone){
+      width: inherit;
+    }
   }
 
   &__modal {
@@ -884,11 +886,11 @@
   &-input-holder {
     display: flex;
     flex-direction: column;
-    width: 40rem;
+    width: 100%;
     margin-top: 1.4rem;
 
     @include respond(phone) {
-      width: 33.5rem;
+      width: 100%;
     }
   }
 

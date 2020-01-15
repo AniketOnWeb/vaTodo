@@ -9,6 +9,7 @@ import Sidebar from "../Layout/Sidebar";
 // import DarkMode from "../DarkMode";
 
 import { CSSTransition } from "react-transition-group";
+import { useSidebarValue } from "../../Contexts";
 
 const Nav = styled.div`
   padding: 2.5rem 5rem 2rem 5rem;
@@ -39,12 +40,24 @@ const Nav = styled.div`
 const Navbar = () => {
   const [showQuickNav, setShowQuickNav] = useState(false);
   const [darkTheme, setDarkTheme] = useState(false);
+  const { showSidebar, setShowSidebar } = useSidebarValue();
 
   return (
     <>
       <Nav>
         <div>
-          <img src={Menu} alt="menu-icon" className="navbar-elements-menu" />
+          <img
+            src={Menu}
+            alt="menu-icon"
+            className="navbar-elements-menu"
+            onClick={() => setShowSidebar(!showSidebar)}
+          />
+
+          {/* {showSidebar && (
+            <div className="show-Sidebar">
+              <Sidebar />
+            </div>
+          )} */}
         </div>
 
         <div style={{ display: "flex" }}>

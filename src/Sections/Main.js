@@ -7,7 +7,8 @@ import {
   ProjectsProvider,
   SelectedProjectProvider,
   SelectedColorProvider,
-  CurrentThemeProvider
+  CurrentThemeProvider,
+  SidebarProvider
 } from "../Contexts";
 
 const Main = ({ history }) => {
@@ -22,7 +23,9 @@ const Main = ({ history }) => {
       <SelectedProjectProvider>
         <SelectedColorProvider>
           <ProjectsProvider>
-            <Content />
+            <SidebarProvider>
+              <Content />
+            </SidebarProvider>
           </ProjectsProvider>
         </SelectedColorProvider>
       </SelectedProjectProvider>

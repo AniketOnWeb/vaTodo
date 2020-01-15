@@ -22,6 +22,12 @@ import {
   SelectedColorContext
 } from "./SelectedColorContext";
 
+import {
+  SidebarContext,
+  useSidebarValue,
+  SidebarProvider
+} from "./SidebarContext";
+
 export {
   ProjectsContext,
   ProjectsProvider,
@@ -34,5 +40,8 @@ export {
   SelectedColorContext,
   useCurrentTheme,
   CurrentThemeProvider,
-  CurrentThemeContext
+  CurrentThemeContext,
+  SidebarContext,
+  useSidebarValue,
+  SidebarProvider
 };

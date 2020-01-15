@@ -12,6 +12,7 @@ import { ExpandArrow } from "../../../assets/svg/all-icons";
 import { AddProjects } from "../AddProjects";
 import { Projects } from "../Projects";
 import { useSelectedProjectValue } from "../../Contexts";
+import { useSidebarValue } from "../../Contexts";
 
 const Side = styled.div`
   width: 33rem;
@@ -20,95 +21,133 @@ const Side = styled.div`
   text-align: center;
 
   @media ${props => props.theme.MediaQueries.medium} {
-    display: none;
+    /* display: none; */
+    position: absolute;
+    width: 21rem;
+    z-index: 99;
+    transform: translate(0, 62px);
   }
 `;
 
 const Generic = styled.div`
   margin-top: 4.5rem;
+
+  .sidebar__generic-container {
+    margin-left: -8rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 `;
 
 const Middle = styled.div`
   margin-top: 4.5rem;
-  margin-left: -7rem;
   cursor: pointer;
+  width: 33rem;
+
+  .contain {
+    margin-left: -7rem;
+  }
+`;
+const Container = styled.div`
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
 `;
 
 const Sidebar = () => {
   const [active, setActive] = useState("inbox");
   const [showProject, setshowProject] = useState(true);
   const { setSelectedProject } = useSelectedProjectValue();
+  const { showSidebar, setShowSidebar } = useSidebarValue();
 
   return (
-    <Side>
-      {/* Logo Sidebar */}
-      <img src={brand} className="sidebar-brand" />
+    showSidebar && (
+      <Side>
+        <Container>
+          {/* Logo Sidebar */}
+          <img src={brand} className="sidebar-brand" />
 
-      {/* Genric Sidebar */}
-      <Generic>
-        <ul className="sidebar__generic">
-          <li
-            className={active === "inbox" ? "active" : undefined}
+          {/* Genric Sidebar */}
+          <Generic>
+            <ul className="sidebar__generic">
+              <li
+                className={active === "inbox" ? "active" : undefined}
+                onClick={() => {
+                  setActive("inbox");
+                  setSelectedProject("INBOX");
+                }}
+              >
+                <div className="sidebar__generic-container">
+                  <span>
+                    <img src={FaInbox} alt="inbox-icon" />
+                  </span>
+                  <span className="sidebar__generic-text">Inbox</span>
+                </div>
+              </li>
+              <li
+                className={active === "today" ? "active" : undefined}
+                onClick={() => {
+                  setActive("today");
+                  setSelectedProject("TODAY");
+                }}
+              >
+                <div className="sidebar__generic-container">
+                  <span>
+                    <img src={FaToday} alt="today-icon" />
+                  </span>
+                  <span className="sidebar__generic-text">Today</span>
+                </div>
+              </li>
+              <li
+                className={active === "next__7" ? "active" : undefined}
+                onClick={() => {
+                  setActive("next__7");
+                  setSelectedProject("NEXT__7");
+                }}
+              >
+                <div
+                  style={{ marginLeft: "-4rem" }}
+                  className="sidebar__generic-container"
+                >
+                  <span>
+                    <img src={FaNext7} alt="next7-icon" />
+                  </span>
+                  <span className="sidebar__generic-text">Next 7 Days</span>
+                </div>
+              </li>
+            </ul>
+          </Generic>
+
+          {/* Middle Sidebar */}
+          <Middle
+            className="sidebar__middle"
             onClick={() => {
-              setActive("inbox");
-              setSelectedProject("INBOX");
+              setshowProject(!showProject);
             }}
           >
-            <span>
-              <img src={FaInbox} alt="inbox-icon" />
-            </span>
-            <span className="sidebar__generic-text">Inbox</span>{" "}
-          </li>
-          <li
-            className={active === "today" ? "active" : undefined}
-            onClick={() => {
-              setActive("today");
-              setSelectedProject("TODAY");
-            }}
-          >
-            <span>
-              <img src={FaToday} alt="today-icon" />
-            </span>
-            <span className="sidebar__generic-text">Today</span>
-          </li>
-          <li
-            className={active === "next__7" ? "active" : undefined}
-            onClick={() => {
-              setActive("next__7");
-              setSelectedProject("NEXT__7");
-            }}
-          >
-            <span>
-              <img src={FaNext7} alt="next7-icon" />
-            </span>
-            <span className="sidebar__generic-text">Next 7 Days</span>
-          </li>
-        </ul>
-      </Generic>
+            <div className="contain">
+              <span>
+                <ExpandArrow
+                  className={`sidebar__middle-icon ${
+                    !showProject ? "hide-projects" : undefined
+                  }`}
+                />
+              </span>
+              <span className="sidebar__middle-text">Projects</span>
+            </div>
+          </Middle>
 
-      {/* Middle Sidebar */}
-      <Middle
-        className="sidebar__middle"
-        onClick={() => {
-          setshowProject(!showProject);
-        }}
-      >
-        <span>
-          <ExpandArrow
-            className={`sidebar__middle-icon ${
-              !showProject ? "hide-projects" : undefined
-            }`}
-          />
-        </span>
-        <span className="sidebar__middle-text">Projects</span>
-      </Middle>
+          {/* Displaying Projects */}
+          {showProject && <Projects />}
 
-      {/* Displaying Projects */}
-      {showProject && <Projects />}
-
-      {/* Add Project Component */}
-      <AddProjects />
-    </Side>
+          {/* Add Project Component */}
+          <AddProjects />
+        </Container>
+      </Side>
+    )
   );
 };
 

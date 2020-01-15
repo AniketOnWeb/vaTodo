@@ -316,7 +316,9 @@
       cursor: pointer;
       line-height: 2.5;
       font-size: 1.4rem;
-      padding-left: 8.5rem;
+      // padding-left: 8.5rem;
+      justify-content: center;
+      width: 33rem;
 
       span:first-of-type {
         margin-right: 10px;
@@ -347,11 +349,9 @@
   }
 
   &__middle {
-    margin-top: 1.5rem;
-    margin-left: -7rem;
     cursor: pointer;
     border-bottom: 1px solid #0000001c;
-    padding: 2rem;
+    padding: 2rem 0;
     @include no-select();
 
     span:first-of-type {
@@ -379,15 +379,13 @@
     @include no-select();
     list-style: none;
     cursor: pointer;
-    padding: 1rem;
+    padding: 1rem 0;
     display: flex;
-    justify-content: space-between;
-    padding-left: 8.5rem;
     font-size: 1.3rem;
     color: white;
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
-    padding-right: 3rem;
+    width: 33rem;
 
     &:hover,
     &.active {
@@ -425,7 +423,7 @@
 //====================================
 .add-project {
   margin-top: 3.5rem;
-  margin-right: 5.5rem;
+  margin-left: -4.5rem;
   @include no-select();
 
   span {
@@ -689,7 +687,7 @@
     width: 55rem;
 
     @include respond(phone) {
-      width:inherit;
+      width: inherit;
     }
 
     &-features {
@@ -811,7 +809,7 @@
   &-wrapper {
     width: 55rem;
 
-    @include respond(phone){
+    @include respond(phone) {
       width: inherit;
     }
   }

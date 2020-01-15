@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 export const SidebarContext = createContext();
 
 export const SidebarProvider = ({ children }) => {
-  const [showSidebar, setShowSidebar] = useState(true);
+  const [showSidebar, setShowSidebar] = useState(false);
   return (
     <SidebarContext.Provider value={{ showSidebar, setShowSidebar }}>
       {children}

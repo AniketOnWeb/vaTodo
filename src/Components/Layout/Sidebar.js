@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import brand from "../../../assets/svg/brand.svg";
 
@@ -25,7 +25,7 @@ const Side = styled.div`
     position: absolute;
     width: 21rem;
     z-index: 99;
-    transform: translate(0, 62px);
+    transform: translate(-13rem, 62px);
   }
 `;
 
@@ -62,6 +62,11 @@ const Sidebar = () => {
   const [showProject, setshowProject] = useState(true);
   const { setSelectedProject } = useSelectedProjectValue();
   const { showSidebar, setShowSidebar } = useSidebarValue();
+  const [bigScreen, setBigScreen] = useState();
+
+  useEffect(() => {
+    setShowSidebar(true);
+  }, [bigScreen]);
 
   return (
     showSidebar && (

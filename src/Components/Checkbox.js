@@ -20,12 +20,7 @@ const Checkbox = ({ id }) => {
       onClick={() => archiveTask()}
     >
       <span className="tasks__list-checkbox--inner">
-        <span className="tasks__list-checkbox--inner-2">
-          <img
-            style={{ width: "1rem", marginBottom: "7px", marginLeft: "1px" }}
-            src={Tick}
-          />
-        </span>
+        <img src={Tick} />
       </span>
     </div>
   );

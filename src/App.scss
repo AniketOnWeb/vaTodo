@@ -688,6 +688,10 @@
     @include no-select();
     width: 55rem;
 
+    @include respond(phone) {
+      width: 33rem;
+    }
+
     &-features {
       display: flex;
       justify-content: space-around;
@@ -741,6 +745,7 @@
     &-checkbox {
       cursor: pointer;
       color: #343434;
+      align-self: center;
       height: 14px;
       width: 14px;
       display: inline-block;
@@ -760,6 +765,12 @@
         border-radius: 50%;
         background-color: #1abc9c8c;
         display: none;
+
+        img {
+          width: 0.9rem;
+          margin-bottom: 5.5px;
+          margin-left: 2.6px;
+        }
       }
     }
   }
@@ -811,29 +822,29 @@
     width: 43rem;
     margin-top: 2rem;
 
-    &__wrapper {
-      &-enter {
-        opacity: 0;
-        transform: translateY(-10rem);
+    // &__wrapper {
+    //   &-enter {
+    //     opacity: 0;
+    //     transform: translateY(-10rem);
 
-        &-active {
-          opacity: 1;
-          transform: translateY(0);
-          transition: opacity 100ms, transform 100ms;
-        }
-      }
+    //     &-active {
+    //       opacity: 1;
+    //       transform: translateY(0);
+    //       transition: opacity 100ms, transform 9990ms;
+    //     }
+    //   }
 
-      &-exit {
-        opacity: 1;
-        transform: translateY(0);
+    //   &-exit {
+    //     opacity: 1;
+    //     transform: translateY(0);
 
-        &-active {
-          opacity: 0;
-          transform: translateY(-7rem);
-          transition: opacity 100ms, transform 100ms;
-        }
-      }
-    }
+    //     &-active {
+    //       opacity: 0;
+    //       transform: translateY(-7rem);
+    //       transition: opacity 100ms, transform 100ms;
+    //     }
+    //   }
+    // }
 
     &-header {
       background-color: #c3f3ea;
@@ -891,6 +902,10 @@
     flex-direction: column;
     width: 40rem;
     margin-top: 1.4rem;
+
+    @include respond(phone) {
+      width: 33.5rem;
+    }
   }
 
   &-input {
@@ -922,6 +937,7 @@
     &-exit {
       opacity: 1;
       transform: translateY(0);
+
       &-active {
         opacity: 0;
         transform: translateY(-1rem);

@@ -24,7 +24,7 @@ const Features = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 40rem;
+  width: 33.5rem;
   margin-top: 1.5rem;
 `;
 const Buttons = styled.div`

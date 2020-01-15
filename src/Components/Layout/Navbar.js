@@ -17,9 +17,18 @@ const Nav = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
+  @media ${props => props.theme.MediaQueries.medium} {
+    padding: 2.5rem 3.5rem 2rem 3.5rem;
+  }
+
+  div:first-child {
+    align-self: center;
+  }
+
   .navbar-elements-menu {
     display: none;
     cursor: pointer;
+    align-self: center;
 
     @media ${props => props.theme.MediaQueries.medium} {
       display: block;

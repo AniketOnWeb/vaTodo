@@ -29,6 +29,12 @@ const ProjectName = styled.div`
   -ms-user-select: none;
   user-select: none;
 
+  .designgrid {
+    @media ${props => props.theme.MediaQueries.medium} {
+      width: 35rem;
+    }
+  }
+
   h1 {
     font-size: 2.7rem;
     font-weight: 600;
@@ -72,7 +78,7 @@ const TaskContent = () => {
     <>
       <ProjectName>
         <h1>{projectName}</h1>
-        <img src={DesignGrid} />
+        <img className="designgrid" src={DesignGrid} />
       </ProjectName>
 
       <AddTasks />
@@ -88,7 +94,7 @@ const TaskContent = () => {
                   setShowTaskDate(false);
                 }}
               >
-                <div style={{ alignSelf: "flex-start" }}>
+                <div style={{ display: "flex" }}>
                   <Checkbox id={task.id} />
                   <span>{task.task}</span>
                 </div>

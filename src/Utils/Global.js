@@ -27,7 +27,7 @@ export default createGlobalStyle`
                 font-size : 60%
             }
 
-            scroll-behavior:smooth;
+            scroll-behavior : smooth;
         }
 
         body{

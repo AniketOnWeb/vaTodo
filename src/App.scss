@@ -764,6 +764,7 @@
       justify-content: space-around;
       flex-direction: row;
       width: 7rem;
+      display: none;
 
       &-container {
         display: flex;
@@ -789,6 +790,10 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+
+      &:hover .tasks__list-features {
+        display: flex;
+      }
 
       img {
         cursor: pointer;

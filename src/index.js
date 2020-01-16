@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import { App } from "./App";
+import * as serviceWorker from "./serviceworker";
 
 //styles Main
 import { ThemeProvider } from "styled-components";
@@ -16,3 +17,5 @@ render(
   </ThemeProvider>,
   document.getElementById("root")
 );
+
+serviceWorker.register();

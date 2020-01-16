@@ -6,20 +6,50 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
     <link
-      href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:100,200,300,400,500,600,700,800|Montserrat:100,200,300,400,500,600,700,800,900|Nunito:200,300,400,600,700,800,900|Open+Sans:300,400,600,700,800|Roboto:100,300,400,500,700,900&display=swap"
-      rel="stylesheet"
-    />
-    <link
       rel="shortcut icon"
       href="../assets/svg/favicon2.png"
       type="image/x-icon"
     />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:100,200,300,400,500,600,700,800|Montserrat:100,200,300,400,500,600,700,800,900|Nunito:200,300,400,600,700,800,900|Open+Sans:300,400,600,700,800|Roboto:100,300,400,500,700,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta name="theme-color" content="#1ABC9c" />
+
+    <link rel="manifest" href="manifest.webmanifest" />
+
     <title>vaTodo</title>
   </head>
 
   <body>
     <div id="modal"></div>
     <div id="root">Loading.....</div>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function() {
+          navigator.serviceWorker
+            .register("worker.js")
+            .then(
+              function(registration) {
+                console.log(
+                  "Worker registration successful",
+                  registration.scope
+                );
+              },
+              function(err) {
+                console.log("Worker registration failed", err);
+              }
+            )
+            .catch(function(err) {
+              console.log(err);
+            });
+        });
+      } else {
+        console.log("Service Worker is not supported by browser.");
+      }
+    </script>
 
     <script src="../src/index.js"></script>
   </body>

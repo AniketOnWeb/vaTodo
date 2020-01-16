@@ -1,0 +1,24 @@
+{
+  "short_name": "vaTodo",
+  "name": "vaTodo : Manage your Daily Tasks",
+  "description": "vaTodo : Will Help you Be More Productuve",
+
+  "icons": [
+    {
+      "src": "../assets/svg/favicon2.png",
+      "type": "image/png",
+      "sizes": "64x64 32x32 24x24 16x16"
+    },
+    {
+      "src": "../assets/svg/favicon1.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+
+  "start_url": ".",
+  "background_color": "#575757",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#1ABC9c"
+}

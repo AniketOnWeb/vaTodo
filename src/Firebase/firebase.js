@@ -2,6 +2,7 @@ import app from "firebase/app";
 import "firebase/auth";
 import "firebase/firebase-firestore";
 import moment from "moment";
+import "firebase/analytics";
 
 const config = {
   apiKey: "AIzaSyCKNvRcMlGG3qvEFlUkJuXpKbt1TnqG-zM",
@@ -10,7 +11,8 @@ const config = {
   projectId: "vatodo-83024",
   storageBucket: "vatodo-83024.appspot.com",
   messagingSenderId: "189555943432",
-  appId: "1:189555943432:web:a7680ea43962e78ad2c9bd"
+  appId: "1:189555943432:web:a7680ea43962e78ad2c9bd",
+  measurementId: "G-XS5SCHDSZ1"
 };
 
 class firebase {

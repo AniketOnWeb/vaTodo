@@ -3,6 +3,7 @@ import "firebase/auth";
 import "firebase/firebase-firestore";
 import moment from "moment";
 import "firebase/analytics";
+import "firebase/remote-config";
 
 const config = {
   apiKey: "AIzaSyCKNvRcMlGG3qvEFlUkJuXpKbt1TnqG-zM",

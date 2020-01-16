@@ -10,7 +10,7 @@ import app from "firebase/app";
 const Overlay = styled.div`
   position: absolute;
   width: 15rem;
-  transform: translateX(18rem) translateY(2rem);
+  transform: translateX(18rem) translateY(6rem);
   z-index: 1;
   border-radius: 3px;
   background-color: white;

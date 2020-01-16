@@ -56,16 +56,11 @@ const Navbar = () => {
             alt="menu-icon"
             className="navbar-elements-menu"
             onClick={() => {
-              // setBigScreen(!bigScreen);
-              setActiveClass(!activeClass);
+              setTimeout(() => {
+                setActiveClass(!activeClass);
+              });
             }}
           />
-          {/* 
-          {bigScreen && (
-            <div className="show-Sidebar">
-              <Sidebar />
-            </div>
-          )} */}
         </div>
 
         <div style={{ display: "flex" }}>

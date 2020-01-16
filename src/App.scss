@@ -428,10 +428,23 @@
     width: 24rem !important;
     z-index: 99;
     transform: translate(-1rem, 62px);
+    animation: slide-Through 2s;
+    transition: all 0.2s ease-in-out;
+
+    @keyframes slide-Thorugh {
+      from {
+        transform: translate(-24rem, 62px);
+      }
+
+      to {
+        transform: translate(-1rem, 62px);
+      }
+    }
   }
 }
 .no-active-sidebar {
   @include respond(phone) {
+    transform: translate(-24rem, 62px);
     display: none;
   }
 }

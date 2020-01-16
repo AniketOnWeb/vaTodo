@@ -744,7 +744,6 @@
       justify-content: space-around;
       flex-direction: row;
       width: 7rem;
-      display: none;
 
       &-container {
         display: flex;
@@ -773,19 +772,6 @@
 
       img {
         cursor: pointer;
-      }
-
-      &:hover .tasks__list-selectedProject {
-        display: none;
-      }
-      &:hover .tasks__list-features {
-        display: flex;
-      }
-      &:active .tasks__list-selectedProject {
-        display: none;
-      }
-      &:active .tasks__list-features {
-        display: flex;
       }
     }
 

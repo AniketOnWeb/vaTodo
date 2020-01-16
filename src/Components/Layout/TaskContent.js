@@ -117,9 +117,9 @@ const TaskContent = () => {
                     <span>{task.task}</span>
                   </div>
 
-                  <p className="tasks__list-selectedProject">
+                  {/* <p className="tasks__list-selectedProject">
                     ⚪ {selectedProject}
-                  </p>
+                  </p> */}
                   <div className="tasks__list-features">
                     <img
                       src={prroject}

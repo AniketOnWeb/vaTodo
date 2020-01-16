@@ -25,32 +25,36 @@ class firebase {
 
   async register(name, email, password) {
     await app.auth().createUserWithEmailAndPassword(email, password);
-    return app
+
+    let batch = app.firestore().batch();
+
+    let proRef = app
       .firestore()
       .collection("Projects")
-      .doc()
-      .set({
-        ProjectColor: "magenta.e58fbd76.svg",
-        ProjectId: "6x9y8z8z",
-        archived: false,
-        name: "WELCOME",
-        userId: `${app.auth().currentUser.uid}`
-      });
-    // .then(
-    //   app
-    //     .firestore()
-    //     .collection("Tasks")
-    //     .add({
-    //       ProjectId: "6x9y8z8z",
-    //       archived: false,
-    //       date: "",
-    //       task: "hi",
-    //       userId: `${app.auth().currentUser.uid}`
-    //     })
-    // );
-    // return app.auth().currentUser.updateProfile({
-    //   displayName: name
-    // });
+      .doc();
+
+    batch.set(proRef, {
+      ProjectColor: "magenta.e58fbd76.svg",
+      ProjectId: "6x9y8z8z",
+      archived: false,
+      name: "WELCOME",
+      userId: `${app.auth().currentUser.uid}`
+    });
+
+    let taskRef = app
+      .firestore()
+      .collection("Tasks")
+      .doc();
+
+    batch.set(taskRef, {
+      ProjectId: "6x9y8z8z",
+      archived: false,
+      date: "",
+      task: "You can add your Tasks here",
+      userId: `${app.auth().currentUser.uid}`
+    });
+
+    return batch.commit();
   }
 
   //Login Existing User

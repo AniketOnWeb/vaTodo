@@ -106,7 +106,7 @@ const TaskContent = () => {
             <ul className="tasks__list">
               {tasks.map(task => (
                 <li
-                  key={`${task.id}`}
+                  key={task.id}
                   onMouseLeave={() => {
                     setShowProjectOvrelay(false);
                     setShowTaskDate(false);
@@ -123,6 +123,7 @@ const TaskContent = () => {
                   <div className="tasks__list-features">
                     <img
                       src={prroject}
+                      key={task.id}
                       onClick={() => {
                         setShowProjectOvrelay(!showProjectOvrelay);
                         setShowTaskDate(false);

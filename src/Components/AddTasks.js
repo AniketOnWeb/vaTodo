@@ -127,7 +127,7 @@ export const AddTasks = () => {
         <CSSTransition
           in={showTaskMain}
           classNames="add-task-container"
-          timeout={400}
+          timeout={100}
           unmountOnExit
           onEnter={() => setShowTaskMain(true)}
           onExit={() => setShowTaskMain(false)}
@@ -166,7 +166,7 @@ export const AddTasks = () => {
                   <CSSTransition
                     in={showProjectOvrelay}
                     classNames="project__overlay__wrapper"
-                    timeout={400}
+                    timeout={100}
                     unmountOnExit
                     onEnter={() => setShowProjectOvrelay(true)}
                     onExit={() => setShowProjectOvrelay(false)}
@@ -201,7 +201,7 @@ export const AddTasks = () => {
                   <CSSTransition
                     in={showTaskDate}
                     classNames="task-date__wrapper"
-                    timeout={400}
+                    timeout={100}
                     unmountOnExit
                     onEnter={() => setShowTaskDate(true)}
                     onExit={() => setShowTaskDate(false)}

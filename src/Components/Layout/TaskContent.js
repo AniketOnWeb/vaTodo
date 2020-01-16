@@ -120,6 +120,7 @@ const TaskContent = () => {
                   {/* <p className="tasks__list-selectedProject">
                     ⚪ {selectedProject}
                   </p> */}
+                  <p className="tasks__list-selectedProject">⚪ Change</p>
                   <div className="tasks__list-features">
                     <img
                       src={prroject}
@@ -133,7 +134,7 @@ const TaskContent = () => {
                       <CSSTransition
                         in={showProjectOvrelay}
                         classNames="project__overlay__wrapper"
-                        timeout={400}
+                        timeout={100}
                         unmountOnExit
                         onEnter={() => setShowProjectOvrelay(true)}
                         onExit={() => setShowProjectOvrelay(false)}
@@ -160,7 +161,7 @@ const TaskContent = () => {
                       <CSSTransition
                         in={showTaskDate}
                         classNames="task-date__wrapper"
-                        timeout={400}
+                        timeout={100}
                         unmountOnExit
                         onEnter={() => setShowTaskDate(true)}
                         onExit={() => setShowTaskDate(false)}
@@ -197,7 +198,7 @@ const TaskContent = () => {
             <CSSTransition
               in={showQuickTask}
               classNames="add-task__modal__wrapper"
-              timeout={400}
+              timeout={100}
               unmountOnExit
               onEnter={() => setShowQuickTask(true)}
               onExit={() => setShowQuickTask(false)}

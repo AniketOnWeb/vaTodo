@@ -798,6 +798,19 @@
       img {
         cursor: pointer;
       }
+
+      &:hover .tasks__list-selectedProject {
+        display: none;
+      }
+      &:hover .tasks__list-features {
+        display: flex;
+      }
+      &:active .tasks__list-selectedProject {
+        display: none;
+      }
+      &:active .tasks__list-features {
+        display: flex;
+      }
     }
 
     &-checkbox {
@@ -851,7 +864,7 @@
       &-active {
         opacity: 1;
         transform: translateY(0);
-        transition: opacity 200ms, transform 200ms;
+        transition: opacity 150ms, transform 150ms;
       }
     }
 
@@ -861,7 +874,7 @@
       &-active {
         opacity: 0;
         transform: translateY(-1rem);
-        transition: opacity 200ms, transform 200ms;
+        transition: opacity 150ms, transform 150ms;
       }
     }
   }
@@ -974,7 +987,7 @@
       &-active {
         opacity: 1;
         transform: translateY(0);
-        transition: opacity 100ms, transform 100ms;
+        transition: opacity 150ms, transform 150ms;
       }
     }
 
@@ -985,7 +998,7 @@
       &-active {
         opacity: 0;
         transform: translateY(-1rem);
-        transition: opacity 100ms, transform 100ms;
+        transition: opacity 150ms, transform 150ms;
       }
     }
   }
@@ -1036,7 +1049,7 @@
       &-active {
         opacity: 1;
         transform: translateY(0);
-        transition: opacity 100ms, transform 100ms;
+        transition: opacity 150ms, transform 150ms;
       }
     }
 
@@ -1046,7 +1059,7 @@
       &-active {
         opacity: 0;
         transform: translateY(-1.5rem);
-        transition: opacity 100ms, transform 100ms;
+        transition: opacity 150ms, transform 150ms;
       }
     }
   }

@@ -84,7 +84,7 @@ const Navbar = () => {
         <CSSTransition
           in={showQuickNav}
           classNames="add-task__modal__wrapper"
-          timeout={400}
+          timeout={100}
           unmountOnExit
           onEnter={() => setShowQuickNav(true)}
           onExit={() => setShowQuickNav(false)}

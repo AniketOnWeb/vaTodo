@@ -165,7 +165,7 @@ const QuickAdd = ({
                   <CSSTransition
                     in={showProjectOvrelay}
                     classNames="project__overlay__wrapper"
-                    timeout={400}
+                    timeout={100}
                     unmountOnExit
                     onEnter={() => setShowProjectOvrelay(true)}
                     onExit={() => setShowProjectOvrelay(false)}
@@ -192,7 +192,7 @@ const QuickAdd = ({
                   <CSSTransition
                     in={showTaskDate}
                     classNames="task-date__wrapper"
-                    timeout={400}
+                    timeout={100}
                     unmountOnExit
                     onEnter={() => setShowTaskDate(true)}
                     onExit={() => setShowTaskDate(false)}

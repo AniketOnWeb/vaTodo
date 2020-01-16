@@ -24,7 +24,16 @@
 
   <body>
     <div id="modal"></div>
-    <div id="root">Loading.....</div>
+    <div id="root">
+      <div className="loader__container">
+        <div className="loader__wrapper">
+          <div className="loader-logo"></div>
+          <div class="box">
+            <div class="spinner spinner--2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script>
       if ("serviceWorker" in navigator) {

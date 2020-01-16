@@ -48,30 +48,50 @@
 }
 
 //Initialize Loader
-.loader1 {
-  position: absolute;
-  top: 48%;
-  left: 48%;
-  height: 5rem;
-  width: 5rem;
-  background-color: transparent;
+
+.box {
+  margin-top: 4rem;
+  margin-left: -0.7rem;
+  align-self: center;
+  overflow: hidden;
+}
+.loader {
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 7rem;
+  }
+
+  &-logo {
+    background-image: url(../assets/svg/favicon1.png);
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 10rem;
+  }
+}
+.spinner {
+  height: 3rem;
+  width: 3rem;
+  background: transparent;
   border-radius: 50%;
-  border: 0.5em solid;
-  animation: dual-ring cubic-bezier(0.88, 0.11, 0, 0.45) infinite 2s;
-  // transform: translate(-50%, -50%);
 }
 
-@keyframes dual-ring {
-  0% {
-    border-color: transparent #c0ff33 transparent #ff335f;
-    transform: rotate(0deg);
-  }
-  50% {
-    border-color: transparent #b433ff transparent #f18520;
-    transform: rotate(180deg);
-  }
-  100% {
-    border-color: transparent #c0ff33 transparent #ff335f;
+.spinner--2 {
+  border: 2px solid var(--color-main);
+  border-top-color: #fff;
+  animation: spinner2 900ms linear infinite;
+}
+@keyframes spinner2 {
+  to {
     transform: rotate(360deg);
   }
 }

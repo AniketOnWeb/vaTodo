@@ -13,6 +13,11 @@ const ColorOverlay = styled.div`
   z-index: 1;
   border-radius: 3px;
   background-color: white;
+
+  @media ${props => props.theme.MediaQueries.medium} {
+    width: 25rem;
+    top: 26rem;
+  }
 `;
 
 export const ProjectColorOverlay = ({

@@ -479,9 +479,17 @@
     width: 45rem;
     margin-top: 6rem;
 
+    @include respond(phone) {
+      width: 30rem;
+    }
+
     &-header {
       background-color: #c3f3ea;
       padding: 1.5rem 2rem;
+
+      @include respond(phone) {
+        padding: 0.8rem 2rem;
+      }
 
       h3 {
         color: var(--color-main);
@@ -503,6 +511,10 @@
         padding-left: 3.5rem;
         margin-bottom: 0.7rem;
         font-weight: 600;
+
+        @include respond(phone) {
+          padding-left: 2.5rem;
+        }
       }
 
       input {
@@ -511,6 +523,12 @@
         border-radius: 0.4rem;
         padding-left: 1rem;
         margin-bottom: 2.5rem;
+
+        @include respond(phone) {
+          width: 24rem;
+          padding-left: 0rem;
+          padding: 0.8rem;
+        }
       }
 
       &-dropdown {

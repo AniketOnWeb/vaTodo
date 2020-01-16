@@ -31,6 +31,12 @@ const DropDown = styled.div`
   justify-content: space-between;
   flex-direction: row;
   cursor: pointer;
+  overflow: hidden;
+
+  @media ${props => props.theme.MediaQueries.medium} {
+    width: 25rem;
+    height: 3.4rem;
+  }
 
   span {
     margin-top: 1rem;
@@ -42,6 +48,10 @@ const DropDown = styled.div`
       letter-spacing: 0.3;
       font-weight: 500;
       justify-content: space-between;
+
+      @media ${props => props.theme.MediaQueries.medium} {
+        margin-left: -1.5rem;
+      }
 
       img {
         margin-right: 0.9rem;

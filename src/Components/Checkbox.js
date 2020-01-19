@@ -1,7 +1,7 @@
 import React from "react";
 import app from "firebase/app";
 import Tick from "../../assets/svg/tick.svg";
-
+``;
 const Checkbox = ({ id }) => {
   const archiveTask = () => {
     app
